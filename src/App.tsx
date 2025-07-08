@@ -2,6 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './styles/index.scss'
+import './styles/animations.scss'
 import './styles/app.scss'
 
 function App() {
@@ -15,6 +16,8 @@ function App() {
           <button className='searchIcon'></button>
         </div>
       </nav>
+
+      <span className='logo'>Listel.</span>
     </>
   )
 }

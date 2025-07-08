@@ -1,15 +1,27 @@
 //define base variables for easy customization
 :root{
+    //values
     --defaultCornerRadius: 4px;
     --defaultPadding: 6px;
-
+    //text
     --light: rgba(255, 255, 255, 0.8);
     --dark: rgba(18, 18, 18, 0.9);
+    //icons
+    --glass: url("src/assets/icons/glassMaterial.png");
+    //animations
+    --cubicSnap: cubic-bezier(0,.68,.29,1);
 }
 
-$navbarGradient: linear-gradient(-180deg,rgba(97, 97, 97, 0.5) 0%, rgba(56, 56, 56, 0.5) 50%, rgba(38, 38, 38, 1) 50%, rgba(0, 0, 0, 0.5) 100%);
-$navbarButtonGradient: linear-gradient(-180deg,rgba(255, 255, 255, 0.5) 0%, rgba(168, 168, 168, 0.5) 50%, rgba(150, 150, 150, 0.5) 50%, rgba(84, 84, 84, 0.5) 100%);
-$navbarButtonActive: linear-gradient(-180deg,rgba(97, 97, 97, 0.5) 0%, rgba(56, 56, 56, 0.5) 50%, rgba(38, 38, 38, 5) 50%, rgba(0, 0, 0, 0.5) 100%);
+//scss variables
+$navbarGradient: linear-gradient(180deg,rgba(97, 97, 97, 0.5) 0%, rgba(56, 56, 56, 0.5) 50%, rgba(38, 38, 38, 1) 50%, rgba(0, 0, 0, 0.5) 100%);
+$navbarButtonGradient: linear-gradient(180deg,rgba(255, 255, 255, 0.5) 0%, rgba(168, 168, 168, 0.5) 50%, rgba(150, 150, 150, 0.5) 50%, rgba(84, 84, 84, 0.5) 100%);
+$navbarButtonActive: linear-gradient(0deg,rgba(255, 255, 255, 0.5) 0%, rgba(168, 168, 168, 0.5) 50%, rgba(150, 150, 150, 0.5) 50%, rgba(84, 84, 84, 0.5) 100%);
+%icon{
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+
 
 // define background, make sure it always covers the entire screen
 body{
@@ -35,10 +47,12 @@ width: 100%;
 display: flex;
 align-items: center;
 justify-content: center;
+animation: showNav;
+animation-duration: 0.4s;
+animation-timing-function: var(--cubicSnap);
 }
 .search{
-    backdrop-filter: blur(3px);
-
+backdrop-filter: blur(3px);
 background-color: rgba(0, 0, 0, 0.5);
 padding: var(--defaultPadding);
 width: 480px;
@@ -66,8 +80,21 @@ input{
     height: 34px;
     width: 34px;
     background: $navbarButtonGradient; 
+    padding: 0px;
     float: right;
     border: none;
-
+    
+    &:active{
+        background: $navbarButtonActive; 
+    }
+    &::after{
+        @extend %icon;
+        background-image: var(--glass);
+        width: 60%;
+        height: 60%;
+        display: block;
+        margin: auto;
+        content: "";
+    }
 }
 }

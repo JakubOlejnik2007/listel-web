@@ -1,3 +1,18 @@
 *{
     font-family: "Roboto", sans-serif;
 }
+
+.logo{
+    // color: rgb(0, 0, 0);
+    position: absolute;
+    bottom: 4px;
+    left: 15px;
+    font-size: 48px;
+    background-color: #2f2f2f00;
+    color: transparent;
+    text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.297);
+    -webkit-background-clip: text;
+       -moz-background-clip: text;
+            background-clip: text;
+    user-select: none;
+}
