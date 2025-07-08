@@ -1,0 +1,73 @@
+//define base variables for easy customization
+:root{
+    --defaultCornerRadius: 4px;
+    --defaultPadding: 6px;
+
+    --light: rgba(255, 255, 255, 0.8);
+    --dark: rgba(18, 18, 18, 0.9);
+}
+
+$navbarGradient: linear-gradient(-180deg,rgba(97, 97, 97, 0.5) 0%, rgba(56, 56, 56, 0.5) 50%, rgba(38, 38, 38, 1) 50%, rgba(0, 0, 0, 0.5) 100%);
+$navbarButtonGradient: linear-gradient(-180deg,rgba(255, 255, 255, 0.5) 0%, rgba(168, 168, 168, 0.5) 50%, rgba(150, 150, 150, 0.5) 50%, rgba(84, 84, 84, 0.5) 100%);
+$navbarButtonActive: linear-gradient(-180deg,rgba(97, 97, 97, 0.5) 0%, rgba(56, 56, 56, 0.5) 50%, rgba(38, 38, 38, 5) 50%, rgba(0, 0, 0, 0.5) 100%);
+
+// define background, make sure it always covers the entire screen
+body{
+    background-image: url("src/assets/main_ui/fabric.webp");
+    background-repeat: no-repeat;
+    background-size:cover;
+    height: 100%;
+    margin: 0px;
+}
+html{
+    height: 100%;
+    margin: 0px;
+}
+
+//nav bar stuff
+nav{
+background: $navbarGradient;
+box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 10px;
+top: 0px;
+left: 0px;
+height: 48px;
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.search{
+    backdrop-filter: blur(3px);
+
+background-color: rgba(0, 0, 0, 0.5);
+padding: var(--defaultPadding);
+width: 480px;
+border-radius: var(--defaultCornerRadius);
+overflow: hidden;
+input{
+    background-color: transparent;
+    width: (calc(100% - 34px - (var(--defaultPadding))));
+    height: 32px;
+    margin-top: calc(0px - var(--defaultPadding));
+    margin-bottom: calc(0px - var(--defaultPadding));
+    margin-right: calc(0px - var(--defaultPadding));
+    border: none;
+    color: var(--light);
+    font-weight: 300;
+    font-size: 15px;
+    &:focus{
+        outline: none;
+    }
+}
+.searchIcon{
+    margin-top: calc(0px - var(--defaultPadding));
+    margin-bottom: calc(0px - var(--defaultPadding));
+    margin-right: calc(0px - var(--defaultPadding));
+    height: 34px;
+    width: 34px;
+    background: $navbarButtonGradient; 
+    float: right;
+    border: none;
+
+}
+}
