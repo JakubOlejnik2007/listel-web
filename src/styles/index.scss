@@ -1,10 +1,14 @@
 *{
     font-family: "Roboto", sans-serif;
+    &::selection {
+        background: #c5f51a;
+        color: #000000;
+        border-radius: 4px;
+      }
 }
-
 .logo{
     // color: rgb(0, 0, 0);
-    position: absolute;
+    position: fixed;
     bottom: 4px;
     left: 15px;
     font-size: 48px;
@@ -15,4 +19,7 @@
        -moz-background-clip: text;
             background-clip: text;
     user-select: none;
+    // animation: showLogo;
+    animation-duration: 0.5s;
+    z-index: -1;
 }

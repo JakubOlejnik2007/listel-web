@@ -3,6 +3,13 @@
     //values
     --defaultCornerRadius: 4px;
     --defaultPadding: 6px;
+
+    --NavBarHeight: 48px;
+
+    --ViewWidth: 65%;
+    --ViewMargin: 12px;
+    --viewCornerRadius: calc(var(--defaultCornerRadius)*2);
+    
     //text
     --light: rgba(255, 255, 255, 0.8);
     --dark: rgba(18, 18, 18, 0.9);
@@ -10,12 +17,14 @@
     --glass: url("src/assets/icons/glassMaterial.png");
     //animations
     --cubicSnap: cubic-bezier(0,.68,.29,1);
+
+    --navbarGradient: linear-gradient(180deg,rgba(97, 97, 97, 0.5) 0%, rgba(56, 56, 56, 0.5) 50%, rgba(38, 38, 38, 1) 50%, rgba(0, 0, 0, 0.5) 100%);
+    --navbarButtonGradient: linear-gradient(180deg,rgba(255, 255, 255, 0.5) 0%, rgba(168, 168, 168, 0.5) 50%, rgba(150, 150, 150, 0.5) 50%, rgba(84, 84, 84, 0.5) 100%);
+    --navbarButtonActive: linear-gradient(0deg,rgba(255, 255, 255, 0.5) 0%, rgba(168, 168, 168, 0.5) 50%, rgba(150, 150, 150, 0.5) 50%, rgba(84, 84, 84, 0.5) 100%);
 }
 
 //scss variables
-$navbarGradient: linear-gradient(180deg,rgba(97, 97, 97, 0.5) 0%, rgba(56, 56, 56, 0.5) 50%, rgba(38, 38, 38, 1) 50%, rgba(0, 0, 0, 0.5) 100%);
-$navbarButtonGradient: linear-gradient(180deg,rgba(255, 255, 255, 0.5) 0%, rgba(168, 168, 168, 0.5) 50%, rgba(150, 150, 150, 0.5) 50%, rgba(84, 84, 84, 0.5) 100%);
-$navbarButtonActive: linear-gradient(0deg,rgba(255, 255, 255, 0.5) 0%, rgba(168, 168, 168, 0.5) 50%, rgba(150, 150, 150, 0.5) 50%, rgba(84, 84, 84, 0.5) 100%);
+
 %icon{
     background-repeat: no-repeat;
     background-size: contain;
@@ -28,8 +37,10 @@ body{
     background-image: url("src/assets/main_ui/fabric.webp");
     background-repeat: no-repeat;
     background-size:cover;
-    height: 100%;
+    height: calc(100% - var(--NavBarHeight) - var(--ViewMargin));
     margin: 0px;
+    background-attachment: fixed;
+
 }
 html{
     height: 100%;
@@ -38,11 +49,12 @@ html{
 
 //nav bar stuff
 nav{
-background: $navbarGradient;
+background: var(--navbarGradient);
 box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 10px;
+position:fixed;
 top: 0px;
 left: 0px;
-height: 48px;
+height: var(--NavBarHeight);
 width: 100%;
 display: flex;
 align-items: center;
@@ -50,6 +62,8 @@ justify-content: center;
 animation: showNav;
 animation-duration: 0.4s;
 animation-timing-function: var(--cubicSnap);
+backdrop-filter: blur(10px);
+z-index: 5;
 }
 .search{
 backdrop-filter: blur(3px);
@@ -58,6 +72,8 @@ padding: var(--defaultPadding);
 width: 480px;
 border-radius: var(--defaultCornerRadius);
 overflow: hidden;
+border: 1px solid rgba(255, 255, 255, 0.192);
+border-bottom-color: rgba(108, 108, 108, 0.705);
 input{
     background-color: transparent;
     width: (calc(100% - 34px - (var(--defaultPadding))));
@@ -79,13 +95,13 @@ input{
     margin-right: calc(0px - var(--defaultPadding));
     height: 34px;
     width: 34px;
-    background: $navbarButtonGradient; 
+    background: var(--navbarButtonGradient); 
     padding: 0px;
     float: right;
     border: none;
-    
+    border-left: 1px solid rgba(255, 255, 255, 0.09);
     &:active{
-        background: $navbarButtonActive; 
+        background: var(--navbarButtonActive); 
     }
     &::after{
         @extend %icon;
@@ -97,4 +113,71 @@ input{
         content: "";
     }
 }
+}
+
+//mail table stuff
+.mailContainer{
+    background-color: rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0px 1px 5px black;
+    min-height: 200px;
+    width: var(--ViewWidth);
+    border-radius: var(--viewCornerRadius);
+    margin: auto;
+    margin-top: calc(var(--NavBarHeight) + var(--ViewMargin));
+    margin-bottom: var(--ViewMargin);
+    overflow: hidden;
+    table{
+        width: 100%;
+        table-layout: fixed;
+        color: var(--light);
+        border-collapse: collapse;
+    }
+    td{
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        height: 25px;
+        line-height: 25px;
+    }
+
+    tr{
+        &:hover{
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+        user-select: none;
+        filter: grayscale(100%);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.178);
+        &:last-child{
+            border-bottom: none;
+        }
+    }
+    #tag{
+        background-color: rgba(255, 0, 0, 0);
+        width: 24px;
+        & .tag{
+            background-color: rgba(0, 0, 0, 0);
+            width: 9px;
+            height: 9px;
+            margin: auto;
+            border-radius: 19px;
+            border: 1px solid rgba(255, 255, 255, 0.251);
+        }
+    }
+    #from{
+        width: 10%;
+    }
+    #title{
+        font-weight: 400;
+        padding-right: var(--defaultPadding);
+        color: var(--light);
+    }
+    #content{
+        font-weight: 200;
+        color: rgba(255, 255, 255, 0.5);
+    }
+    #date{
+        width: 50px;
+        text-align: right;
+        padding-right: var(--defaultPadding);
+    }
 }

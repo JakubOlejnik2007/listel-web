@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import Nav from './partials/navbar.tsx'
+import MailRow from './partials/mailView/MailRow.tsx'
 import './styles/index.scss'
 import './styles/animations.scss'
 import './styles/app.scss'
@@ -10,12 +12,66 @@ function App() {
 
   return (
     <>
-      <nav>
-        <div className='search'>
-          <input></input>
-          <button className='searchIcon'></button>
-        </div>
-      </nav>
+      <Nav></Nav>
+
+      <div className='mailContainer'>
+        <table border={0}>
+        <MailRow/>
+        <MailRow/>
+        <MailRow/>
+        <MailRow/>
+        <MailRow/>
+        <MailRow/>
+        <MailRow/>
+        <MailRow/>
+        <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+         <MailRow/>
+        </table>
+      </div>
 
       <span className='logo'>Listel.</span>
     </>
