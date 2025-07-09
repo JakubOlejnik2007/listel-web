@@ -72,7 +72,9 @@ function App() {
          <MailRow/>
         </table>
       </div>
-
+      <span className='pageEnd'>
+      to już jest koniec...
+      </span>
       <span className='logo'>Listel.</span>
     </>
   )

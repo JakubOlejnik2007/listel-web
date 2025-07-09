@@ -14,3 +14,25 @@
         opacity: 1;
     }
 }
+@keyframes focusElement {
+    from {
+        border: 1px solid;
+        border-color: #c5f51a;
+        box-shadow: inset 0px 0px 5px #c5f51a;
+    }
+    to {
+        border-color:rgba(255, 255, 255, 0.192);
+        border-bottom-color: rgba(108, 108, 108, 0.705);
+        box-shadow: none;
+
+    }
+}
+@keyframes focusSearch {
+    from {
+        box-shadow: inset 0px 0px 5px #c5f51a;
+    }
+    to {
+        box-shadow: none;
+
+    }
+}

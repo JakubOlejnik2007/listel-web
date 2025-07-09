@@ -2,7 +2,7 @@ import React from "react";
 
 function MailRow() {
   return (
-    <tr>
+    <tr tabIndex={0}>
     <td id='tag'><div className='tag'></div></td> 
     <td id='from'>OLX</td>
     <td id='content'>         
