@@ -10,6 +10,8 @@
     --ViewMargin: 12px;
     --viewCornerRadius: calc(var(--defaultCornerRadius)*2);
     
+    --viewTableHeight: 35px;
+
     //text
     --light: rgba(255, 255, 255, 0.8);
     --dark: rgba(18, 18, 18, 0.9);
@@ -136,8 +138,8 @@ input{
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-        height: 25px;
-        line-height: 25px;
+        height: var(--viewTableHeight);
+        line-height: var(--viewTableHeight);
     }
 
     tr{
