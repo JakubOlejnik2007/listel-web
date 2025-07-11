@@ -9,6 +9,8 @@ const MailRow = ({ mail }: any) => {
 
   const tempDiv = document.createElement("div");
   tempDiv.innerHTML = mail.html;
+  tempDiv.querySelectorAll("style").forEach(styleTag => styleTag.remove());
+  console.log(tempDiv)
   const text = tempDiv.innerText
 
 
