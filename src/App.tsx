@@ -16,53 +16,7 @@ function App() {
 
       <div className='mailContainer'>
         <table border={0}>
-        <MailRow/>
-        <MailRow/>
-        <MailRow/>
-        <MailRow/>
-        <MailRow/>
-        <MailRow/>
-        <MailRow/>
-        <MailRow/>
-        <MailRow/>
-         <MailRow/>
-         <MailRow/>
-         <MailRow/>
-         <MailRow/>
-         <MailRow/>
-         <MailRow/>
-         <MailRow/>
-         <MailRow/>
-         <MailRow/>
-         <MailRow/>
-         <MailRow/>
-         <MailRow/>
-         <MailRow/>
-         <MailRow/>
-         <MailRow/>
-         <MailRow/>
-         <MailRow/>
-         <MailRow/>
-         <MailRow/>
-         <MailRow/>
-         <MailRow/>
-         <MailRow/>
-         <MailRow/>
-         <MailRow/>
-         <MailRow/>
-         <MailRow/>
-         <MailRow/>
-         <MailRow/>
-         <MailRow/>
-         <MailRow/>
-         <MailRow/>
-         <MailRow/>
-         <MailRow/>
-         <MailRow/>
-         <MailRow/>
-         <MailRow/>
-         <MailRow/>
-         <MailRow/>
+       
          <MailRow/>
          <MailRow/>
          <MailRow/>

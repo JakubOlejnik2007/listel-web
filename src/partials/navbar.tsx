@@ -16,7 +16,10 @@ function Nav() {
 
 
   return (
-    <nav>
+    <nav> 
+      <div className="mailDropdown">
+        mati@ep09.net
+      </div>
       <div className="search">
         <input id="search"/>
         <button className="searchIcon"></button>

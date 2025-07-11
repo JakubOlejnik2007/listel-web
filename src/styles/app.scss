@@ -51,21 +51,37 @@ html{
 
 //nav bar stuff
 nav{
-background: var(--navbarGradient);
-box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 10px;
-position:fixed;
-top: 0px;
-left: 0px;
-height: var(--NavBarHeight);
-width: 100%;
-display: flex;
-align-items: center;
-justify-content: center;
-animation: showNav;
-animation-duration: 0.4s;
-animation-timing-function: var(--cubicSnap);
-backdrop-filter: blur(10px);
-z-index: 5;
+    background: var(--navbarGradient);
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 10px;
+    position:fixed;
+    top: 0px;
+    left: 0px;
+    height: var(--NavBarHeight);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: showNav;
+    animation-duration: 0.4s;
+    animation-timing-function: var(--cubicSnap);
+    backdrop-filter: blur(10px);
+    z-index: 5;
+    .mailDropdown{
+        position: absolute;
+        left: var(--ViewMargin);
+        backdrop-filter: blur(3px);
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: var(--defaultPadding);
+        color: rgba(255, 255, 255, 0.5);
+        border-radius: var(--defaultCornerRadius);
+        height: 22px;
+        line-height: 22px;
+        border: 1px solid rgba(255, 255, 255, 0.192);
+        border-bottom-color: rgba(108, 108, 108, 0.705);
+        font-weight: 300;
+        padding-right: 30px;
+        transition: 0.1s;
+    }
 }
 .search{
 backdrop-filter: blur(3px);
