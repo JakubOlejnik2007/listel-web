@@ -11,22 +11,16 @@ const MailList = () => {
     return (
         <div className='mailContainer'>
             <table border={0}>
-                {
-                    solvedProblemQuery.isSuccess && <>
-                        {
-                            (solvedProblemQuery.data).map((mail, idx) => {
-                                return (<>{mail.subject}</>)
-                            })
-                        }
-                    </>
-                }
-                <MailRow />
-                <MailRow />
-                <MailRow />
-                <MailRow />
-                <MailRow />
-                <MailRow />
-                <MailRow />
+                <tbody>
+                    {
+                        solvedProblemQuery.isSuccess && <>
+                            {
+                                (solvedProblemQuery.data).map((mail, idx) => {
+                                    return <MailRow mail={mail} />
+                                })
+                            }
+                        </>
+                    }</tbody>
             </table>
         </div>
     )
