@@ -42,6 +42,7 @@ body{
     height: calc(100% - var(--NavBarHeight) - var(--ViewMargin));
     margin: 0px;
     background-attachment: fixed;
+    background-color: black;
 
 }
 html{
@@ -172,6 +173,7 @@ input{
             background-color: rgba(0, 0, 0, 0.3);
         }
         user-select: none;
+        -webkit-user-select: none;
         filter: grayscale(100%);
         border-bottom: 1px solid rgba(255, 255, 255, 0.178);
         &:last-child{
