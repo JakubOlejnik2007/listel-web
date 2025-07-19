@@ -6,7 +6,7 @@ import MailRow from './partials/mailView/MailRow.tsx'
 import './styles/index.scss'
 import './styles/animations.scss'
 import './styles/app.scss'
-import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
+import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query'
 import { getPaginatedMails } from './service/apiFetchFunctions.ts'
 import MailList from './pages/MailList.tsx'
 

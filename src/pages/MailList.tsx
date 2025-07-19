@@ -1,11 +1,15 @@
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import MailRow from "../partials/mailView/MailRow";
 import { getPaginatedMails } from "../service/apiFetchFunctions";
 import { useState } from "react";
 
 const MailList = () => {
     const [page, setPage] = useState(0)
-    const solvedProblemQuery = useQuery(["solved-problems", page], () => getPaginatedMails("POP3", 20, 1));
+
+    const fetchEmailsQuery = useQuery({
+        queryKey: ["emails-page"],
+        queryFn: () => getPaginatedMails("POP3", 20, 1)
+    })
 
 
     return (
@@ -13,9 +17,9 @@ const MailList = () => {
             <table border={0}>
                 <tbody>
                     {
-                        solvedProblemQuery.isSuccess && <>
+                        fetchEmailsQuery.isSuccess && <>
                             {
-                                (solvedProblemQuery.data).map((mail, idx) => {
+                                (fetchEmailsQuery.data).map((mail, idx) => {
                                     return <MailRow mail={mail} />
                                 })
                             }
