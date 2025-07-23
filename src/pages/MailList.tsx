@@ -4,6 +4,7 @@ import { getPaginatedMails } from "../service/apiFetchFunctions";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Mail from "./Mail";
+import type { ParsedMail } from "../types/ParsedMail.type";
 
 const MailList = () => {
     const [mail, setMail] = useState(-1)
@@ -26,7 +27,7 @@ const MailList = () => {
                     {
                         fetchEmailsQuery.isSuccess && <>
                             {
-                                (fetchEmailsQuery.data).map((mail, idx) => {
+                                (fetchEmailsQuery.data as ParsedMail[]).map((mail, idx) => {
                                     return <MailRow mail={mail} openMail={() => navigate(`/mail/${idx}`)} />
                                 })
                             }
