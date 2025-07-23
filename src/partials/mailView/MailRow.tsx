@@ -1,4 +1,4 @@
-const MailRow = ({ mail }: any) => {
+const MailRow = ({ mail, openMail }: any) => {
 
   const from = mail.from.value[0];
   const subject = mail.subject
@@ -17,7 +17,7 @@ const MailRow = ({ mail }: any) => {
 
 
   return (
-    <tr tabIndex={0}>
+    <tr tabIndex={0} onClick={() => openMail()}>
       <td id='tag'><div className='tag'></div></td>
       <td id='from'>{from.name ? from.name : from.address}</td>
       <td id='content'>

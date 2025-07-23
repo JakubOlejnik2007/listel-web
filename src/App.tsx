@@ -10,6 +10,7 @@ import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-quer
 import { getPaginatedMails } from './service/apiFetchFunctions.ts'
 import MailList from './pages/MailList.tsx'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Mail from './pages/Mail.tsx'
 
 const queryClient = new QueryClient();
 
@@ -23,7 +24,7 @@ function App() {
         <Router>
           <Routes>
             <Route path='/mail' element={<MailList />} />
-            <Route path='/mail/:id' element={<MailList />} />
+            <Route path='/mail/:id' element={<Mail />} />
 
 
           </Routes>

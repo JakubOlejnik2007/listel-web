@@ -2,10 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import MailRow from "../partials/mailView/MailRow";
 import { getPaginatedMails } from "../service/apiFetchFunctions";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import Mail from "./Mail";
 
 const MailList = () => {
-    const [page, setPage] = useState(0)
+    const [mail, setMail] = useState(-1)
 
     const fetchEmailsQuery = useQuery({
         queryKey: ["emails-page"],
@@ -13,6 +14,8 @@ const MailList = () => {
     })
 
     const { id } = useParams()
+
+    const navigate = useNavigate()
 
     console.log(id)
 
@@ -24,7 +27,7 @@ const MailList = () => {
                         fetchEmailsQuery.isSuccess && <>
                             {
                                 (fetchEmailsQuery.data).map((mail, idx) => {
-                                    return <MailRow mail={mail} />
+                                    return <MailRow mail={mail} openMail={() => navigate(`/mail/${idx}`)} />
                                 })
                             }
                         </>
