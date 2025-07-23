@@ -23,6 +23,9 @@
     --navbarGradient: linear-gradient(180deg, rgba(97, 97, 97, 0.5) 0%, rgba(56, 56, 56, 0.5) 50%, rgba(38, 38, 38, 1) 50%, rgba(0, 0, 0, 0.5) 100%);
     --navbarButtonGradient: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(168, 168, 168, 0.5) 50%, rgba(150, 150, 150, 0.5) 50%, rgba(84, 84, 84, 0.5) 100%);
     --navbarButtonActive: linear-gradient(0deg, rgba(255, 255, 255, 0.5) 0%, rgba(168, 168, 168, 0.5) 50%, rgba(150, 150, 150, 0.5) 50%, rgba(84, 84, 84, 0.5) 100%);
+
+    --controlbarGradient: linear-gradient(180deg,rgba(217, 217, 217, 1) 0%, rgba(163, 163, 163, 1) 100%);;
+
 }
 
 //scss variables
@@ -39,12 +42,18 @@ body {
     background-image: url("/images/fabric.webp");
     background-repeat: no-repeat;
     background-size: cover;
-    height: calc(100% - var(--NavBarHeight) - var(--ViewMargin));
+    min-height: calc(100% - var(--NavBarHeight) - var(--ViewMargin) - 16px);
     margin: 0px;
     background-attachment: fixed;
     background-color: black;
-
+    padding-bottom: 16px;
+    padding-top: var(--ViewMargin);
+    :has(.mailHeader){
+    padding-top: calc(var(--NavBarHeight) + var(--ViewMargin));
+    }
 }
+
+
 
 html {
     height: 100%;
@@ -161,7 +170,7 @@ nav {
     width: var(--ViewWidth);
     border-radius: var(--viewCornerRadius);
     margin: auto;
-    margin-top: calc(var(--NavBarHeight) + var(--ViewMargin));
+    margin-top: calc(var(--NavBarHeight));
     margin-bottom: var(--ViewMargin);
     overflow: hidden;
 
@@ -244,16 +253,36 @@ nav {
     }
 }
 .mailDisplay{
-    background-color: rgba(0, 0, 0, 0.3);
-    box-shadow: inset 0px 1px 5px black;
+    background-color: rgb(255, 255, 255);
+    // box-shadow: inset 0px 1px 5px black !important;
     padding: 0px;
     min-height: 200px;
     width: var(--ViewWidth);
-    border-radius: var(--viewCornerRadius);
+    border-bottom-left-radius: var(--viewCornerRadius);
+    border-bottom-right-radius: var(--viewCornerRadius);
     margin: auto;
-    margin-top: calc(var(--NavBarHeight) + var(--ViewMargin));
     margin-bottom: var(--ViewMargin);
     overflow: hidden;
+    z-index: 2;
+    color: var(--dark);
+}
+.mailHeader{
+    margin: auto;
+    background-color: rgb(203, 203, 203);
+    background: var(--navbarGradient);
+    padding: 0px;
+    height: 42px;
+    line-height: 42px;
+    border-top-left-radius: var(--viewCornerRadius);
+    border-top-right-radius: var(--viewCornerRadius);
+    width: var(--ViewWidth);
+    border: 1px solid rgb(255, 255, 255, 0.3);
+    border-top-color: rgba(255, 255, 255, 0.5);
+    outline: 1px solid rgba(0, 0, 0, 0.5);
+    font-weight: 200;
+    color: var(--light);
+    text-shadow: rgb(0, 0, 0) 0px 1px 2px;
+
 }
 //footer and stuff
 .pageEnd {
