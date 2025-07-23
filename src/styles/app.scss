@@ -243,7 +243,18 @@ nav {
         padding-right: calc(var(--defaultPadding)*2);
     }
 }
-
+.mailDisplay{
+    background-color: rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0px 1px 5px black;
+    padding: 0px;
+    min-height: 200px;
+    width: var(--ViewWidth);
+    border-radius: var(--viewCornerRadius);
+    margin: auto;
+    margin-top: calc(var(--NavBarHeight) + var(--ViewMargin));
+    margin-bottom: var(--ViewMargin);
+    overflow: hidden;
+}
 //footer and stuff
 .pageEnd {
     width: 100%;

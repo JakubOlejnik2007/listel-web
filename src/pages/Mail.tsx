@@ -25,8 +25,9 @@ const Mail = () => {
 
     if (!mail) return null
     console.log(mail.html)
-    return <div className="mailContainer">
-        {mail.subject}
+    return <>
+    <div className="mailSubject">{mail.subject}</div>
+    <div className="mailDisplay">
 
         <iframe
             srcDoc={mail.html}
@@ -38,6 +39,7 @@ const Mail = () => {
 
 
     </div>
+    </>
 }
 
 export default Mail
