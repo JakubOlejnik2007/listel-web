@@ -1,5 +1,5 @@
 //define base variables for easy customization
-:root{
+:root {
     //values
     --defaultCornerRadius: 4px;
     --defaultPadding: 6px;
@@ -9,7 +9,7 @@
     --ViewWidth: 65%;
     --ViewMargin: 12px;
     --viewCornerRadius: calc(var(--defaultCornerRadius)*2);
-    
+
     --viewTableHeight: 35px;
 
     //text
@@ -18,16 +18,16 @@
     //icons
     --glass: url("src/assets/icons/glassMaterial.png");
     //animations
-    --cubicSnap: cubic-bezier(0,.68,.29,1);
+    --cubicSnap: cubic-bezier(0, .68, .29, 1);
 
-    --navbarGradient: linear-gradient(180deg,rgba(97, 97, 97, 0.5) 0%, rgba(56, 56, 56, 0.5) 50%, rgba(38, 38, 38, 1) 50%, rgba(0, 0, 0, 0.5) 100%);
-    --navbarButtonGradient: linear-gradient(180deg,rgba(255, 255, 255, 0.5) 0%, rgba(168, 168, 168, 0.5) 50%, rgba(150, 150, 150, 0.5) 50%, rgba(84, 84, 84, 0.5) 100%);
-    --navbarButtonActive: linear-gradient(0deg,rgba(255, 255, 255, 0.5) 0%, rgba(168, 168, 168, 0.5) 50%, rgba(150, 150, 150, 0.5) 50%, rgba(84, 84, 84, 0.5) 100%);
+    --navbarGradient: linear-gradient(180deg, rgba(97, 97, 97, 0.5) 0%, rgba(56, 56, 56, 0.5) 50%, rgba(38, 38, 38, 1) 50%, rgba(0, 0, 0, 0.5) 100%);
+    --navbarButtonGradient: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(168, 168, 168, 0.5) 50%, rgba(150, 150, 150, 0.5) 50%, rgba(84, 84, 84, 0.5) 100%);
+    --navbarButtonActive: linear-gradient(0deg, rgba(255, 255, 255, 0.5) 0%, rgba(168, 168, 168, 0.5) 50%, rgba(150, 150, 150, 0.5) 50%, rgba(84, 84, 84, 0.5) 100%);
 }
 
 //scss variables
 
-%icon{
+%icon {
     background-repeat: no-repeat;
     background-size: contain;
 }
@@ -35,26 +35,27 @@
 
 
 // define background, make sure it always covers the entire screen
-body{
-    background-image: url("src/assets/main_ui/fabric.webp");
+body {
+    background-image: url("/images/fabric.webp");
     background-repeat: no-repeat;
-    background-size:cover;
+    background-size: cover;
     height: calc(100% - var(--NavBarHeight) - var(--ViewMargin));
     margin: 0px;
     background-attachment: fixed;
     background-color: black;
 
 }
-html{
+
+html {
     height: 100%;
     margin: 0px;
 }
 
 //nav bar stuff
-nav{
+nav {
     background: var(--navbarGradient);
     box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 10px;
-    position:fixed;
+    position: fixed;
     top: 0px;
     left: 0px;
     height: var(--NavBarHeight);
@@ -67,7 +68,8 @@ nav{
     animation-timing-function: var(--cubicSnap);
     backdrop-filter: blur(10px);
     z-index: 5;
-    .mailDropdown{
+
+    .mailDropdown {
         position: absolute;
         left: var(--ViewMargin);
         backdrop-filter: blur(3px);
@@ -84,67 +86,75 @@ nav{
         transition: 0.1s;
     }
 }
-.search{
-backdrop-filter: blur(3px);
-background-color: rgba(0, 0, 0, 0.5);
-padding: var(--defaultPadding);
-width: 480px;
-border-radius: var(--defaultCornerRadius);
-overflow: hidden;
-border: 1px solid rgba(255, 255, 255, 0.192);
-border-bottom-color: rgba(108, 108, 108, 0.705);
-&:has(input:focus){
-animation: focusElement;
-animation-duration: 0.5s;
-}
-input{
-    background-color: transparent;
-    width: (calc(100% - 34px - (var(--defaultPadding))));
-    height: 32px;
-    margin-top: calc(0px - var(--defaultPadding));
-    margin-bottom: calc(0px - var(--defaultPadding));
-    margin-right: calc(0px - var(--defaultPadding));
-    border: none;
-    color: var(--light);
-    font-weight: 300;
-    font-size: 15px;
-    &:focus{
-        outline: none;
-    }
-}
-.searchIcon{
-    margin-top: calc(0px - var(--defaultPadding));
-    margin-bottom: calc(0px - var(--defaultPadding));
-    margin-right: calc(0px - var(--defaultPadding));
-    height: 34px;
-    width: 34px;
-    background: var(--navbarButtonGradient); 
-    padding: 0px;
-    float: right;
-    border: none;
-    border-left: 1px solid rgba(255, 255, 255, 0.09);
-    &:active{
-        background: var(--navbarButtonActive); 
-    }
-    &::after{
-        @extend %icon;
-        background-image: var(--glass);
-        width: 60%;
-        height: 60%;
-        display: block;
-        margin: auto;
-        content: "";
-    }
-    &:focus-visible{
-        animation: focusSearch;
+
+.search {
+    backdrop-filter: blur(3px);
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: var(--defaultPadding);
+    width: 480px;
+    border-radius: var(--defaultCornerRadius);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.192);
+    border-bottom-color: rgba(108, 108, 108, 0.705);
+
+    &:has(input:focus) {
+        animation: focusElement;
         animation-duration: 0.5s;
-        outline: none;
     }
+
+    input {
+        background-color: transparent;
+        width: (calc(100% - 34px - (var(--defaultPadding))));
+        height: 32px;
+        margin-top: calc(0px - var(--defaultPadding));
+        margin-bottom: calc(0px - var(--defaultPadding));
+        margin-right: calc(0px - var(--defaultPadding));
+        border: none;
+        color: var(--light);
+        font-weight: 300;
+        font-size: 15px;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .searchIcon {
+        margin-top: calc(0px - var(--defaultPadding));
+        margin-bottom: calc(0px - var(--defaultPadding));
+        margin-right: calc(0px - var(--defaultPadding));
+        height: 34px;
+        width: 34px;
+        background: var(--navbarButtonGradient);
+        padding: 0px;
+        float: right;
+        border: none;
+        border-left: 1px solid rgba(255, 255, 255, 0.09);
+
+        &:active {
+            background: var(--navbarButtonActive);
+        }
+
+        &::after {
+            @extend %icon;
+            background-image: var(--glass);
+            width: 60%;
+            height: 60%;
+            display: block;
+            margin: auto;
+            content: "";
+        }
+
+        &:focus-visible {
+            animation: focusSearch;
+            animation-duration: 0.5s;
+            outline: none;
+        }
     }
 }
 
 //mail table stuff
-.mailContainer{
+.mailContainer {
     background-color: rgba(0, 0, 0, 0.3);
     box-shadow: inset 0px 1px 5px black;
     min-height: 200px;
@@ -154,13 +164,15 @@ input{
     margin-top: calc(var(--NavBarHeight) + var(--ViewMargin));
     margin-bottom: var(--ViewMargin);
     overflow: hidden;
-    table{
+
+    table {
         width: 100%;
         table-layout: fixed;
         color: var(--light);
         border-collapse: collapse;
     }
-    td{
+
+    td {
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -168,18 +180,21 @@ input{
         line-height: var(--viewTableHeight);
     }
 
-    tr{
-        &:hover{
+    tr {
+        &:hover {
             background-color: rgba(0, 0, 0, 0.3);
         }
+
         user-select: none;
         -webkit-user-select: none;
         filter: grayscale(100%);
         border-bottom: 1px solid rgba(255, 255, 255, 0.178);
-        &:last-child{
+
+        &:last-child {
             border-bottom: none;
         }
-        &:focus-visible{
+
+        &:focus-visible {
             background-color: rgba(0, 0, 0, 0.3);
             box-shadow: inset 0px 1px 1px #c5f51a, -1px 1px #c5f51a;
             filter: none;
@@ -187,35 +202,42 @@ input{
             outline: none;
         }
     }
-    #tag{
+
+    #tag {
         background-color: rgba(255, 0, 0, 0);
         width: 24px;
-        & .tag{
+
+        & .tag {
             background-color: rgba(0, 0, 0, 0);
             width: 9px;
             height: 9px;
             margin: auto;
             border-radius: 19px;
             border: 1px solid rgba(255, 255, 255, 0.25);
-            &:hover{
+
+            &:hover {
                 background-color: rgba(255, 255, 255, 0.1);
             }
         }
 
     }
-    #from{
+
+    #from {
         width: 10%;
     }
-    #title{
+
+    #title {
         font-weight: 400;
         padding-right: var(--defaultPadding);
         color: var(--light);
     }
-    #content{
+
+    #content {
         font-weight: 200;
         color: rgba(255, 255, 255, 0.5);
     }
-    #date{
+
+    #date {
         width: 50px;
         text-align: right;
         padding-right: calc(var(--defaultPadding)*2);
@@ -223,7 +245,7 @@ input{
 }
 
 //footer and stuff
-.pageEnd{
+.pageEnd {
     width: 100%;
     text-align: center;
     display: block;
