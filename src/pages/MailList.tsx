@@ -22,6 +22,7 @@ function usePaginationInfo(data: any) {
 
 
 const MailList = () => {
+    const pagination = 3
     const [mail, setMail] = useState(-1)
 
     const fetchMails = async ({ pageParam = 1 }: { pageParam?: number }) => {
@@ -37,7 +38,7 @@ const MailList = () => {
         isFetchingNextPage,
         status,
     } = useInfiniteQuery({
-        queryKey: ['projects'],
+        queryKey: ['emails-page'],
         queryFn: fetchMails,
         initialPageParam: 1,
         getNextPageParam: (lastPage) => lastPage.hasNextPage ? lastPage.page + 1 : undefined,
@@ -46,11 +47,6 @@ const MailList = () => {
 
     const { currentPage, totalPages, hasNextPage } = usePaginationInfo(data)
 
-
-    const fetchEmailsQuery = useQuery({
-        queryKey: ["emails-page"],
-        queryFn: () => getPaginatedMails("POP3", 20, 1)
-    })
 
     const { id } = useParams()
 
@@ -72,7 +68,7 @@ const MailList = () => {
                     {data.pages.map((group, i) => (
                         <>
                             {group.data.map((mail, idx) => (
-                                <MailRow mail={mail} />
+                                <MailRow mail={mail} openMail={() => navigate(`/mail/${i}_${idx}`)} />
                             ))}
                         </>
                     ))}
@@ -92,28 +88,6 @@ const MailList = () => {
                     </div>
                     <div>{isFetching && !isFetchingNextPage ? 'Fetching...' : null}</div>
                 </tbody> </table></div>
-    )
-
-
-
-
-
-    return (
-        <div className='mailContainer'>
-            <table border={0}>
-                <tbody>
-                    {
-                        fetchEmailsQuery.isSuccess && <>
-                            {
-                                (fetchEmailsQuery.data as ParsedMail[]).map((mail, idx) => {
-                                    return <MailRow mail={mail} openMail={() => navigate(`/mail/${idx}`)} />
-                                })
-                            }
-                        </>
-                    }
-                </tbody>
-            </table>
-        </div>
     )
 }
 

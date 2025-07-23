@@ -4,42 +4,51 @@ import { useNavigate, useParams } from "react-router-dom"
 import type { ParsedMail } from "../types/ParsedMail.type"
 
 const Mail = () => {
+    const ID_REG = /^\d+_\d+$/;
+    const [mail, setMail] = useState<ParsedMail | null>(null);
+
     const navigate = useNavigate()
     const params = useParams()
     const queryClient = useQueryClient()
 
-    const mails = queryClient.getQueryData(["emails-page"]) as ParsedMail[] | undefined
-    const id = Number(params.id)
-
-    const [mail, setMail] = useState<ParsedMail | null>(null)
+    const mails = queryClient.getQueryData(["emails-page"]) as {
+        pages: ParsedMail[][]
+    } | undefined
 
     useEffect(() => {
-        if (!mails || isNaN(id) || id < 0 || id >= mails.length) {
+        console.log(!params.id, !ID_REG.test(params.id), !mails)
+        if (!params.id || !ID_REG.test(params.id) || !mails) {
             navigate("/mail")
             return
         }
-        setMail(mails[id])
-    }, [mails, id, navigate])
 
+        const [pageStr, elementStr] = params.id.split("_")
+        const page = parseInt(pageStr)
+        const element = parseInt(elementStr)
 
+        console.log(page, element, mails)
+
+        const target = mails.pages?.[page]?.data?.[element]
+        console.log(target)
+        if (!target) {
+            navigate("/mail")
+            return
+        }
+
+        setMail(target)
+    }, [params.id, mails, navigate])
 
     if (!mail) return null
-    console.log(mail.html)
-    return <>
-    <div className="mailSubject">{mail.subject}</div>
-    <div className="mailDisplay">
 
-        <iframe
-            srcDoc={mail.html}
-            style={{ width: '100%', height: '600px', border: 'none' }}
-        />
-
-
-
-
-
-    </div>
-    </>
+    return (
+        <>
+            <div className="mailSubject">{mail.subject}</div>
+            <div
+                className="mailDisplay"
+                dangerouslySetInnerHTML={{ __html: mail.html }}
+            />
+        </>
+    )
 }
 
 export default Mail
