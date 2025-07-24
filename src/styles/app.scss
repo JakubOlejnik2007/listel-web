@@ -342,7 +342,14 @@ nav {
         background-color: #c6f51a55;
     }
     .title{
-        margin-left: 6px;
+    }
+    .separator{
+        height: 42px;
+        width: 0px;
+        border-left: 1px solid rgb(255, 255, 255, 0.3);
+        border-right: 1px solid rgba(0, 0, 0, 0.3);
+        margin-left: 8px;
+        margin-right: 8px;
     }
 }
 //footer and stuff

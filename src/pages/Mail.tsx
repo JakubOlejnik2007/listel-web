@@ -45,6 +45,7 @@ const Mail = () => {
             <div className="mailHeader">
                 <button className="back" title="powrót"></button>
                 <button className="user" title="nadawca..."></button>
+                <span className="separator"/>
                 <span className="title">{mail.subject}</span>
             </div>
             <div
