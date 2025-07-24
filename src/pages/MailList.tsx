@@ -62,6 +62,7 @@ const MailList = () => {
     ) : status === 'error' ? (
         <p>Error: {error.message}</p>
     ) : (
+        <>
         <div className="mailContainer">
             <table border={0}>
                 <tbody>
@@ -72,6 +73,9 @@ const MailList = () => {
                             ))}
                         </>
                     ))}
+
+                </tbody> </table></div>
+
                     <div>
                         <button
                             onClick={() => fetchNextPage()}
@@ -87,7 +91,7 @@ const MailList = () => {
                         Strona {currentPage} z {totalPages}
                     </div>
                     <div>{isFetching && !isFetchingNextPage ? 'Fetching...' : null}</div>
-                </tbody> </table></div>
+                </>
     )
 }
 

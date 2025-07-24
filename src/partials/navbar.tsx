@@ -21,7 +21,7 @@ function Nav() {
         mati@ep09.net
       </div>
       <div className="search">
-        <input id="search"/>
+        <input id="search" placeholder="przeszukaj pocztę..."/>
         <button className="searchIcon"></button>
       </div>
     </nav>
