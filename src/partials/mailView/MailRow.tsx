@@ -1,4 +1,6 @@
-const MailRow = ({ mail, openMail }: any) => {
+import type { ParsedMail } from "../../types/ParsedMail.type";
+
+const MailRow = ({ mail, openMail }: { mail: ParsedMail, openMail: () => void }) => {
 
   const from = mail.from.value[0];
   const subject = mail.subject
@@ -7,11 +9,11 @@ const MailRow = ({ mail, openMail }: any) => {
   const dateDiffHours = (today - date) / 1000 / 60 / 60
 
 
-  const tempDiv = document.createElement("div");
-  tempDiv.innerHTML = mail.html;
-  tempDiv.querySelectorAll("style").forEach(styleTag => styleTag.remove());
-  console.log(tempDiv)
-  const text = tempDiv.innerText
+  // const tempDiv = document.createElement("div");
+  // tempDiv.innerHTML = mail.html;
+  // tempDiv.querySelectorAll("style").forEach(styleTag => styleTag.remove());
+  // console.log(tempDiv)
+  // const text = tempDiv.innerText
 
 
 
@@ -22,7 +24,7 @@ const MailRow = ({ mail, openMail }: any) => {
       <td id='from'>{from.name ? from.name : from.address}</td>
       <td id='content'>
         <span id='title'>{subject}</span>
-        {text}</td>
+        {mail.text}</td>
       <td id='date'>{dateDiffHours > 24 ? date.toLocaleDateString("pl-PL", {
         day: "2-digit",
         month: "short"
