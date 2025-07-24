@@ -42,7 +42,11 @@ const Mail = () => {
 
     return (
         <>
-            <div className="mailHeader">{mail.subject}</div>
+            <div className="mailHeader">
+                <button className="back" title="powrót"></button>
+                <button className="user" title="nadawca..."></button>
+                <span className="title">{mail.subject}</span>
+            </div>
             <div
                 className="mailDisplay"
                 dangerouslySetInnerHTML={{ __html: mail.html }}
