@@ -93,6 +93,21 @@ const MailList = () => {
 
 
 
+    useEffect(() => {
+        if (status !== 'success') return;
+
+        const hash = window.location.hash;
+        if (!hash) return;
+
+        requestAnimationFrame(() => {
+            const el = document.querySelector(hash);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        });
+    }, [status, data]);
+
+
 
 
 
@@ -110,7 +125,7 @@ const MailList = () => {
                         {data.pages.map((group, i) => (
                             <>
                                 {group.data.map((mail, idx) => (
-                                    <MailRow mail={mail} openMail={() => navigate(`/mail/${i}_${idx}`)} />
+                                    <MailRow mail={mail} openMail={() => navigate(`/mail/${i}_${idx}`)} id={`mail${i}_${idx}`} />
                                 ))}
                             </>
                         ))}

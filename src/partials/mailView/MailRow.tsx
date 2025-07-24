@@ -1,6 +1,6 @@
 import type { ParsedMail } from "../../types/ParsedMail.type";
 
-const MailRow = ({ mail, openMail }: { mail: ParsedMail, openMail: () => void }) => {
+const MailRow = ({ mail, openMail, id }: { mail: ParsedMail, openMail: () => void, id: string }) => {
 
   const from = mail.from.value[0];
   const subject = mail.subject
@@ -19,7 +19,7 @@ const MailRow = ({ mail, openMail }: { mail: ParsedMail, openMail: () => void })
 
 
   return (
-    <tr tabIndex={0} onClick={() => openMail()}>
+    <tr tabIndex={0} onClick={() => openMail()} id={id}>
       <td id='tag'><div className='tag'></div></td>
       <td id='from'>{from.name ? from.name : from.address}</td>
       <td id='content'>
