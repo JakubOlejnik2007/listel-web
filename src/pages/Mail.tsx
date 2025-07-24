@@ -12,7 +12,9 @@ const Mail = () => {
     const queryClient = useQueryClient()
 
     const mails = queryClient.getQueryData(["emails-page"]) as {
-        pages: ParsedMail[][]
+        pages: {
+            data: ParsedMail[]
+        }[]
     } | undefined
 
     useEffect(() => {
