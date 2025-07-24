@@ -183,7 +183,27 @@ nav {
         }
     }
 }
+.tag {
+    background-color: rgba(0, 0, 0, 0);
+    width: 9px;
+    height: 9px;
+    margin: auto;
+    border-radius: 19px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 4px;
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        background-image: url("images/icons/plusFlatLight.png");
+    }
 
+    //tag colors
+    .empty{
+    }
+
+
+}
 //mail table stuff
 .mailContainer {
     background-color: rgba(0, 0, 0, 0.3);
@@ -237,20 +257,6 @@ nav {
     #tag {
         background-color: rgba(255, 0, 0, 0);
         width: 24px;
-
-        & .tag {
-            background-color: rgba(0, 0, 0, 0);
-            width: 9px;
-            height: 9px;
-            margin: auto;
-            border-radius: 19px;
-            border: 1px solid rgba(255, 255, 255, 0.25);
-
-            &:hover {
-                background-color: rgba(255, 255, 255, 0.1);
-            }
-        }
-
     }
 
     #from {
@@ -284,7 +290,7 @@ nav {
     border-bottom-right-radius: var(--viewCornerRadius);
     margin: auto;
     margin-bottom: var(--ViewMargin);
-    overflow: hidden;
+    overflow: auto;
     z-index: 2;
     color: var(--dark);
 }
@@ -342,6 +348,9 @@ nav {
         background-color: #c6f51a55;
     }
     .title{
+        height: 42px;
+        line-height: 42px;
+        overflow: auto;
     }
     .separator{
         height: 42px;
@@ -350,6 +359,11 @@ nav {
         border-right: 1px solid rgba(0, 0, 0, 0.3);
         margin-left: 8px;
         margin-right: 8px;
+    }
+    .tag{
+        margin: 0;
+        margin-left: 8px;
+        backdrop-filter: blur(3px);
     }
 }
 //footer and stuff
