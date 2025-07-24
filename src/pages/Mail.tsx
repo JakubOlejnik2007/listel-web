@@ -43,8 +43,9 @@ const Mail = () => {
     return (
         <>
             <div className="mailHeader">
-                <button className="back" title="powrót"></button>
+                <button className="back" title="powrót" onClick={() => navigate(`/mail/`)}></button>
                 <button className="user" title="nadawca..."></button>
+                <button className="mail" title="mail..."></button>
                 <span className="separator"/>
                 <span className="title">{mail.subject}</span>
                 <div className='tag'></div>

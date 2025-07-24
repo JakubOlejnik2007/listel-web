@@ -48,7 +48,7 @@ body {
     background-attachment: fixed;
     background-color: black;
     padding-bottom: 16px;
-    padding-top: var(--ViewMargin);
+    padding-top: calc(var(--ViewMargin));
     :has(.mailHeader){
     padding-top: calc(var(--NavBarHeight) + var(--ViewMargin));
     }
@@ -198,9 +198,7 @@ nav {
         background-image: url("images/icons/plusFlatLight.png");
     }
 
-    //tag colors
-    .empty{
-    }
+    //todo: tag colors
 
 
 }
@@ -336,6 +334,11 @@ nav {
         }
         &.user{
             background-image: url("images/icons/userFlatLight.png");
+        }
+        &.mail{
+            background-image: url("images/icons/envelopeFlatLight.png");
+            background-size: 14px;
+
         }
         opacity: 0.7;
     }
