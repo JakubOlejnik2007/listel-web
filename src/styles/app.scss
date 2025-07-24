@@ -17,7 +17,7 @@
     --accent: #c5f51a;
     --dark: rgba(18, 18, 18, 0.9);
     //icons
-    --glass: url("images/icons/glassMaterial.png");
+    --glass: url("/images/icons/glassMaterial.png");
     //animations
     --cubicSnap: cubic-bezier(0, .68, .29, 1);
 
@@ -101,7 +101,7 @@ nav {
             content: "";
             top: 13px;
             right: 12px;
-            background-image: url("images/icons/arrowFlatLight.png");
+            background-image: url("/images/icons/arrowFlatLight.png");
             background-position: center;
             background-size: contain;
             width: 8px;
@@ -195,7 +195,7 @@ nav {
     background-size: 4px;
     &:hover {
         background-color: rgba(255, 255, 255, 0.1);
-        background-image: url("images/icons/plusFlatLight.png");
+        background-image: url("/images/icons/plusFlatLight.png");
     }
 
     //todo: tag colors
@@ -328,15 +328,15 @@ nav {
         background-size: 12px;
         background-repeat: no-repeat;
         &.back{
-            background-image: url("images/icons/arrowFlatLight.png");
+            background-image: url("/images/icons/arrowFlatLight.png");
             transform: rotate(180deg);
             background-size: 10px;
         }
         &.user{
-            background-image: url("images/icons/userFlatLight.png");
+            background-image: url("/images/icons/userFlatLight.png");
         }
         &.mail{
-            background-image: url("images/icons/envelopeFlatLight.png");
+            background-image: url("/images/icons/envelopeFlatLight.png");
             background-size: 14px;
 
         }
