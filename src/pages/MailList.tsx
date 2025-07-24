@@ -73,8 +73,13 @@ const MailList = () => {
                             ))}
                         </>
                     ))}
-
                 </tbody> </table></div>
+
+                <span className='pageEnd'>
+                to już jest koniec...
+                </span>
+                <span className='logo'>Listel.</span>
+
 
                     <div>
                         <button
@@ -91,7 +96,8 @@ const MailList = () => {
                         Strona {currentPage} z {totalPages}
                     </div>
                     <div>{isFetching && !isFetchingNextPage ? 'Fetching...' : null}</div>
-                </>
+                
+        </>
     )
 }
 
