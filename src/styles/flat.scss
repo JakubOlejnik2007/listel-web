@@ -1,0 +1,102 @@
+.flat{
+background-image: none;
+background-color: rgb(47, 47, 47);
+    --navbarGradient: none;
+    --navbarButtonGradient: none;
+    --navbarButtonActive: none;
+
+    --glass: url("/images/icons/glassFlatLight.png");
+
+    --defaultCornerRadius: 6px;
+    --defaultPadding: 6px;
+
+    --NavBarHeight: 48px;
+
+    --ViewWidth: 65%;
+    --ViewMargin: 12px;
+    --viewCornerRadius: calc(var(--defaultCornerRadius)*2);
+
+    --viewTableHeight: 35px;
+
+    --borderColor: rgba(255, 255, 255, 0.2);
+         --accent: #c5f51a;
+
+
+nav{
+    box-shadow: none;
+    border-bottom: 1px solid #c6f51a7d;
+    background-color: #e3e3e30d;
+    backdrop-filter: blur(10px);
+    .mailDropdown {
+     border: 1px solid #c6f51a7d;
+        &:hover{
+            border: 1px solid #c5f51a;
+        }
+    }
+            &:hover{
+            border-bottom: 1px solid #c5f51a;
+            backdrop-filter: blur(20px);
+        }
+        transition: 1s;
+        
+}
+.search{
+    border-radius: 99px;
+    border: 1px solid #c6f51a7d;
+    transition: 0.1s;
+    &:hover{
+        border: 1px solid #c5f51a;
+    }
+    input {
+        padding-left: 8px;
+    }
+    .searchIcon{
+        margin-right: 0px;
+        margin-left: 0px;
+        opacity: 0.6;
+
+    }
+    &:focus{
+        animation: none;
+    }
+}
+
+.mailContainer {
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: none;
+    border: 1px solid var(--borderColor);
+    tr {
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+    }
+}
+
+.mailHeader{
+outline: none;
+    border: 1px rgb(32, 32, 32) solid;
+border-bottom: none;
+    background-color: rgba(255, 255, 255, 0.239);
+text-shadow: none;
+.separator{
+    border: none;
+    width: 1px;
+    background-color: rgba(255, 255, 255, 0.418);
+}
+}
+.mailDisplay{
+    border: 1px rgb(32, 32, 32) solid;
+    border-top: none;
+}
+.pageEnd{
+    text-shadow: none;
+    font-weight: 100;
+    color: white;
+}
+.logo{
+    color: #c6f51a1d;
+    font-weight: 100;
+    text-shadow: none;
+}
+
+}
