@@ -1,7 +1,7 @@
 .flat{
 background-image: none;
-background-color: rgb(47, 47, 47);
-    --navbarGradient: none;
+background-color: #202325;
+--navbarGradient: linear-gradient(90deg,rgba(211, 226, 0, 0.1) 0%, rgba(19, 115, 120, 0.1) 100%);
     --navbarButtonGradient: none;
     --navbarButtonActive: none;
 
@@ -38,7 +38,6 @@ nav{
             backdrop-filter: blur(20px);
         }
         transition: 1s;
-        
 }
 .search{
     border-radius: 99px;
@@ -66,6 +65,10 @@ nav{
     box-shadow: none;
     border: 1px solid var(--borderColor);
     tr {
+        background-color: #00000018;
+        &:nth-child(even) {
+            background-color: #00000036;
+        }
         &:hover {
             background-color: rgba(255, 255, 255, 0.1);
         }
@@ -73,8 +76,9 @@ nav{
 }
 
 .mailHeader{
+    background: none;
 outline: none;
-    border: 1px rgb(32, 32, 32) solid;
+      border: 1px solid rgba(255, 255, 255, 0.3);
 border-bottom: none;
     background-color: rgba(255, 255, 255, 0.239);
 text-shadow: none;
@@ -85,7 +89,7 @@ text-shadow: none;
 }
 }
 .mailDisplay{
-    border: 1px rgb(32, 32, 32) solid;
+      border: 1px solid rgba(255, 255, 255, 0.3);
     border-top: none;
 }
 .pageEnd{
