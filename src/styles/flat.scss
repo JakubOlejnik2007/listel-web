@@ -43,23 +43,54 @@ nav{
     border-radius: 99px;
     border: 1px solid #c6f51a7d;
     transition: 0.1s;
+    display: flex;
+    align-items: center;
+    background-color: #1a1d1fc8;
+    padding: 4px 10px;
+    gap: 6px;
     &:hover{
         border: 1px solid #c5f51a;
     }
+
     input {
         padding-left: 8px;
+        flex: 1;
+        font-size: 15px;
+        border: none;
+        background: none;
+        color: #c5f51a;
+        font-weight: 100;
+
     }
+
+
+
     .searchIcon{
         margin-right: 0px;
         margin-left: 0px;
         opacity: 0.6;
-
+        width: 20px;
+        height: 20px;
+        opacity: 0.8;
     }
+
     &:focus{
         animation: none;
     }
 }
-
+    .mailDropdown {
+        color: #c6f51a88  !important;
+        padding: 4px 16px;
+        padding-right: 30px;
+        font-weight: 100;
+        font-size: 14px;
+        &::after{
+            top: 12px;
+            right: 13px;
+            width: 6px;
+            height: 6px;
+        }
+    }
 .mailContainer {
     background-color: rgba(0, 0, 0, 0);
     box-shadow: none;
@@ -86,6 +117,7 @@ text-shadow: none;
     border: none;
     width: 1px;
     background-color: rgba(255, 255, 255, 0.418);
+    height: 60%;
 }
 }
 .mailDisplay{
