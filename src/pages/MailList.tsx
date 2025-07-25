@@ -105,7 +105,7 @@ const MailList = () => {
                 el.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         });
-    }, [status, data]);
+    }, [status]);
 
 
 
