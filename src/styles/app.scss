@@ -62,6 +62,8 @@ html {
 
 //nav bar stuff
 nav {
+    user-select: none;
+    -webkit-user-select: none;
     background: var(--navbarGradient);
     box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 10px;
     position: fixed;
@@ -116,7 +118,39 @@ nav {
         }
     }
 }
+.mailDropdownContainerList{
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: var(--ViewMargin);
+    backdrop-filter: blur(3px);
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: var(--defaultCornerRadius);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.192);
+    border-bottom-color: rgba(108, 108, 108, 0.705);
+    width: max-content;
+    min-width: 150px;
+    div{
+        padding: var(--defaultPadding);
+        padding-left: calc(var(--defaultPadding)*2);
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 300;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        user-select: none;
+        &:last-child{
+            border-bottom: none;
+        }
+        &:hover{
+            background-color: rgba(197, 245, 26, 0.1);
+            cursor: pointer;
+        }
+    }
 
+}
+    .show{
+        display: block;
+    }
 .search {
     backdrop-filter: blur(3px);
     background-color: rgba(0, 0, 0, 0.5);
