@@ -415,9 +415,28 @@ nav {
     user-select: none;
 }
 
+//enrollment
 
+.addMailboxContainer{
+    width: 480px;
+    height: 320px;
+    margin: auto;
+    margin-top: calc(var(--NavBarHeight) + var(--ViewMargin));
+    background-color: rgba(255, 255, 255, 0.173);
+    border-radius: calc(var(--viewCornerRadius)/2);
 
-
+    border: 1px solid rgb(255, 255, 255, 0.3);
+    border-top-color: rgba(255, 255, 255, 0.5);
+    outline: 1px solid rgba(0, 0, 0, 0.5);
+    .brand{
+        display: block;
+        margin: auto;
+        margin-top: 20px;
+        font-size: 42px;
+        text-align: center;
+        text-shadow: 0px 1px 0px rgb(108, 108, 108);
+    }
+}
 
 
 // Eksperyment
