@@ -54,6 +54,38 @@ const Mail = () => {
                 <span className="title">{mail.subject}</span>
                 <div className='tag'></div>
             </div>
+            <div style={{
+                maxWidth: "65%",
+                overflow: "auto",
+                display: "flex",
+                margin: "10px auto",
+                gap: "10px",
+            }}>
+
+                {
+                    mail.attachments.map((attachment, idx) => {
+                        return (
+                            <div style={{
+                                padding: "10px",
+                                height: "50px",
+                                minWidth: "200px",
+                                backgroundColor: "white",
+                                display: "flex",
+                                flexDirection: "column",
+                                justifyContent: "space-between"
+                            }}>
+                                <p style={{
+                                    margin: 0
+                                }}>{attachment.filename}</p>
+                                <p style={{
+                                    margin: 0,
+                                    textAlign: "right"
+                                }}>{attachment.contentType.split("/")[1].toUpperCase()}</p>
+                            </div>
+                        )
+                    })
+                }
+            </div>
             <div
                 className="mailDisplay"
                 dangerouslySetInnerHTML={{ __html: mail.html }}
