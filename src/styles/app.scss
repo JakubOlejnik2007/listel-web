@@ -402,6 +402,41 @@ nav {
         backdrop-filter: blur(3px);
     }
 }
+
+.mailAttachments{
+    max-width: 65%;
+    overflow: auto;
+    display: flex;
+    margin: 0px auto;
+    gap: 10px;
+    background-color: #ffffffa2;
+    // padding-top: 8px;
+    // padding-bottom: 8px;
+}
+.Attachment{
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: pointer;
+
+    padding: 0px;
+    height: 21px;
+    line-height: 21px;
+    padding-left: 6px;
+    padding-right: 6px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    background-color: rgba(255, 255, 255, 0.261);
+    border: #000000 1px solid;
+    display: block;
+    border-radius: 32px;
+    font-size: 14px;
+    
+  span {
+    white-space: nowrap;
+    display: block;
+}
+}
+
 //footer and stuff
 .pageEnd {
     width: 100%;

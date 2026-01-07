@@ -68,34 +68,27 @@ const Mail = () => {
                 <div className='tag'></div>
             </div>
             <div style={{
-                maxWidth: "65%",
-                overflow: "auto",
-                display: "flex",
-                margin: "10px auto",
-                gap: "10px",
-            }}>
+
+            }} className="mailAttachments">
 
                 {
                     mail.attachments.map((attachment, idx) => {
                         return (
-                            <div style={{
-                                padding: "10px",
-                                height: "50px",
-                                minWidth: "200px",
-                                backgroundColor: "white",
-                                display: "flex",
-                                flexDirection: "column",
-                                justifyContent: "space-between"
-                            }}
+                            <div className="Attachment"
+                            
                                 onClick={() => downloadPdf(attachment)}
                             >
-                                <p style={{
+                                <span style={{
                                     margin: 0
-                                }}>{attachment.filename}</p>
-                                <p style={{
+                                    
+                                }}
+                                // className="Attachment"
+                                >{attachment.filename}</span>
+                                {/* <span style={{
                                     margin: 0,
+                                    right: 0,
                                     textAlign: "right"
-                                }}>{attachment.contentType.split("/")[1].toUpperCase()}</p>
+                                }}>{attachment.contentType.split("/")[1].toUpperCase()}</span> */}
                             </div>
                         )
                     })
