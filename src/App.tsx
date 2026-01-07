@@ -10,6 +10,7 @@ import { getPaginatedMails } from './service/apiFetchFunctions.ts'
 import MailList from './pages/MailList.tsx'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Mail from './pages/Mail.tsx'
+import AddMailbox from './pages/AddMailbox.tsx'
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ function App() {
           <Routes>
             <Route path='/mail' element={<MailList />} />
             <Route path='/mail/:id' element={<Mail />} />
+            <Route path="/" element={<AddMailbox />} />
 
 
           </Routes>
