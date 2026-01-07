@@ -42,6 +42,7 @@ const MailList = () => {
         queryKey: ['emails-page'],
         queryFn: fetchMails,
         initialPageParam: 1,
+        staleTime: 60000,
         getNextPageParam: (lastPage) => lastPage.hasNextPage ? lastPage.page + 1 : undefined,
     })
 
