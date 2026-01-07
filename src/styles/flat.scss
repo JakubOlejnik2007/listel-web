@@ -93,6 +93,7 @@ nav{
     }
 .mailContainer {
     background-color: rgba(0, 0, 0, 0);
+    outline: 1px solid rgba(0, 0, 0, 0.5);
     box-shadow: none;
     border: 1px solid var(--borderColor);
     tr {
@@ -135,4 +136,48 @@ text-shadow: none;
     text-shadow: none;
 }
 
+//enrollment
+.addMailboxContainer{
+    box-shadow: none;
+    border: 1px var(--borderColor) solid;
+        outline: 1px solid rgba(0, 0, 0, 0.5);
+
+    .brand{
+        color: #c6f51aff;
+        font-weight: 100;
+        text-shadow: none;
+    }
+        #hr{
+            background: var(--borderColor);
+        }
+        #hrbox{
+            display: flex;
+            width:100%;
+            justify-content: center;
+            white-space: nowrap;
+            
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        #hrboxmain{
+            color: var(--borderColor);
+            text-shadow: none;
+            margin-left: 6px;
+            margin-right: 6px;
+        }
+    }
+    button{
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px rgba(255,255,255,0.2) solid;
+        &:before{display: none;}
+        &:hover{
+            border: 1px rgba(255, 255, 255, 0.37) solid;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        &:active{
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px var(--accent) solid;
+        }
+        
+    }
 }
