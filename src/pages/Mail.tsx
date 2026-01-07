@@ -3,6 +3,19 @@ import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import type { ParsedMail } from "../types/ParsedMail.type"
 
+function downloadPdf(att) {
+    const uint8 = new Uint8Array(att.content.data)
+    const blob = new Blob([uint8], { type: att.contentType })
+    const url = URL.createObjectURL(blob)
+
+    const a = document.createElement("a")
+    a.href = url
+    a.download = att.filename
+    a.click()
+
+    URL.revokeObjectURL(url)
+}
+
 const Mail = () => {
     const ID_REG = /^\d+_\d+$/;
     const [mail, setMail] = useState<ParsedMail | null>(null);
@@ -73,7 +86,9 @@ const Mail = () => {
                                 display: "flex",
                                 flexDirection: "column",
                                 justifyContent: "space-between"
-                            }}>
+                            }}
+                                onClick={() => downloadPdf(attachment)}
+                            >
                                 <p style={{
                                     margin: 0
                                 }}>{attachment.filename}</p>
