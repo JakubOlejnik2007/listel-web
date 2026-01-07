@@ -45,6 +45,8 @@ const MailList = () => {
         getNextPageParam: (lastPage) => lastPage.hasNextPage ? lastPage.page + 1 : undefined,
     })
 
+    console.log(data)
+
 
     const { currentPage, totalPages, hasNextPage } = usePaginationInfo(data)
 
@@ -124,7 +126,7 @@ const MailList = () => {
                     <tbody>
                         {data.pages.map((group, i) => (
                             <>
-                                {group.data.map((mail, idx) => (
+                                {group.map((mail, idx) => (
                                     <MailRow mail={mail} openMail={() => navigate(`/mail/${i}_${idx}`)} id={`mail${i}_${idx}`} />
                                 ))}
                             </>
