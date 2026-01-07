@@ -17,6 +17,8 @@ const Mail = () => {
         }[]
     } | undefined
 
+    console.log("mails", mails)
+
     useEffect(() => {
         console.log(!params.id, !ID_REG.test(params.id), !mails)
         if (!params.id || !ID_REG.test(params.id) || !mails) {
@@ -30,7 +32,7 @@ const Mail = () => {
 
         console.log(page, element, mails)
 
-        const target = mails.pages?.[page]?.data?.[element]
+        const target = mails.pages?.[page]?.[element]
         console.log(target)
         if (!target) {
             navigate("/mail")
