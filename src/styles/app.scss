@@ -472,7 +472,9 @@ nav {
         font-size: 42px;
         text-align: center;
         color: rgba(39, 39, 39, 1);
-        text-shadow: 0px 1px 0px rgba(147, 147, 147, 1),
+        text-shadow: 0px 1px 0px rgba(147, 147, 147, 1);
+        user-select: none;
+        -webkit-user-select: none;
     }
     button{
         margin-left: auto;
