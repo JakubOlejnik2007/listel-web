@@ -82,12 +82,12 @@ const AddMailbox = () => {
     };
 
     return (
-        <div className="addMailboxContainer">
+        <div className={!selectedType ? ("addMailboxContainer"):("addMailboxContainer expand")}>
             <div className="brand">Listel</div>
 
             <div id="hrbox">
                 <div id="hr"></div>
-                <span id="hrboxmain">dodaj skrzynkę</span>
+                <span id="hrboxmain">dodaj skrzynkę {selectedType}</span>
                 <div id="hr"></div>
             </div>
 
@@ -98,18 +98,16 @@ const AddMailbox = () => {
                     <button onClick={() => handleTypeSelect('IMAP')}>IMAP</button>
                 </>
             ) : (
-                <form onSubmit={handleSubmit} style={{ width: '100%', maxWidth: '400px' }}>
-                    <h3>{selectedType}</h3>
-                    
+                <form onSubmit={handleSubmit}>                    
                     {error && (
                         <div style={{ color: 'red', marginBottom: '1rem' }}>
                             {error}
                         </div>
                     )}
 
-                    <div style={{ marginBottom: '1rem' }}>
-                        <label style={{ display: 'block', marginBottom: '0.5rem' }}>
-                            Email:
+                    <div className="inputform">
+                        <label>
+                            Email
                         </label>
                         <input
                             type="email"
@@ -117,14 +115,13 @@ const AddMailbox = () => {
                             value={formData.email}
                             onChange={handleInputChange}
                             placeholder="twoj@email.com"
-                            style={{ width: '100%', padding: '0.5rem' }}
                             required
                         />
                     </div>
 
-                    <div style={{ marginBottom: '1rem' }}>
-                        <label style={{ display: 'block', marginBottom: '0.5rem' }}>
-                            Hasło:
+                    <div className="inputform">
+                        <label>
+                            Hasło
                         </label>
                         <input
                             type="password"
@@ -132,14 +129,13 @@ const AddMailbox = () => {
                             value={formData.password}
                             onChange={handleInputChange}
                             placeholder="••••••••"
-                            style={{ width: '100%', padding: '0.5rem' }}
                             required
                         />
                     </div>
 
-                    <div style={{ marginBottom: '1rem' }}>
-                        <label style={{ display: 'block', marginBottom: '0.5rem' }}>
-                            Host:
+                    <div className="inputform">
+                        <label>
+                            Host
                         </label>
                         <input
                             type="text"
@@ -147,14 +143,13 @@ const AddMailbox = () => {
                             value={formData.host}
                             onChange={handleInputChange}
                             placeholder="mail.example.com"
-                            style={{ width: '100%', padding: '0.5rem' }}
                             required
                         />
                     </div>
 
-                    <div style={{ marginBottom: '1rem' }}>
-                        <label style={{ display: 'block', marginBottom: '0.5rem' }}>
-                            Port:
+                    <div >
+                        <label>
+                            Port
                         </label>
                         <input
                             type="number"
@@ -162,17 +157,17 @@ const AddMailbox = () => {
                             value={formData.port}
                             onChange={handleInputChange}
                             placeholder={selectedType === 'POP3' ? '995' : '993'}
-                            style={{ width: '100%', padding: '0.5rem' }}
                         />
                     </div>
 
                     <div style={{ display: 'flex', gap: '1rem', marginTop: '1.5rem' }}>
-                        <button type="submit" disabled={isLoading}>
-                            {isLoading ? 'Dodawanie...' : 'Dodaj skrzynkę'}
-                        </button>
                         <button type="button" onClick={handleCancel}>
                             Anuluj
                         </button>
+                        <button type="submit" disabled={isLoading}>
+                            {isLoading ? 'Dodawanie...' : 'Dodaj skrzynkę'}
+                        </button>
+
                     </div>
                 </form>
             )}

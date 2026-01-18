@@ -23,10 +23,19 @@ function Nav() {
   };
 
   const handleMailboxSwitch = (mailboxId: string) => {
+    console.log('Switching to mailbox:', mailboxId);
+    
+    // Don't switch if already active
+    if (mailboxId === activeMailbox?.id) {
+      console.log('Already active, closing dropdown');
+      setIsMailDropdownOpen(false);
+      return;
+    }
+    
+    console.log('Setting new active mailbox');
     setActiveMailbox(mailboxId);
     setIsMailDropdownOpen(false);
-    loadMailboxes();
-    // Refresh the page to load new mailbox
+    
     window.location.reload();
   };
 
@@ -56,24 +65,45 @@ function Nav() {
     <nav> 
       <div 
         className="mailDropdown" 
-        onMouseDown={() => setIsMailDropdownOpen(prev => !prev)}
-      >
+        onMouseDown={(e) => {
+    const target = e.target as HTMLElement;
+
+    // If click is inside the dropdown list, do nothing
+    if (target.closest(".mailDropdownContainerList")) {
+      return;
+    }
+
+    setIsMailDropdownOpen(prev => !prev);
+  }}
+  >
+
         {activeMailbox ? activeMailbox.email : "Wybierz skrzynkę"}
 
         <div className={`mailDropdownContainerList ${isMailDropdownOpen ? 'show' : ''}`}>
-          {mailboxes.map((mailbox) => (
-            <div 
-              key={mailbox.id}
-              onMouseUp={() => handleMailboxSwitch(mailbox.id)}
-              style={{ 
-                fontWeight: mailbox.id === activeMailbox?.id ? 'bold' : 'normal'
-              }}
-            >
-              {mailbox.email}
+          {mailboxes.length === 0 ? (
+            <div style={{ color: 'rgba(255, 255, 255, 0.5)' }}>
+              Brak skrzynek
             </div>
-          ))}
+          ) : (
+            mailboxes.map((mailbox) => (
+              <div 
+                key={mailbox.id}
+                onMouseUp={(e) => {
+                  e.stopPropagation();
+                  handleMailboxSwitch(mailbox.id);
+                }}
+                className={mailbox.id === activeMailbox?.id ? 'active' : ''}
+              >
+                {mailbox.email}
+                {mailbox.id === activeMailbox?.id && ' ✓'}
+              </div>
+            ))
+          )}
           
-          <div onMouseUp={handleAddMailbox}>
+          <div onMouseUp={(e) => {
+            e.stopPropagation();
+            handleAddMailbox();
+          }}>
             + dodaj skrzynkę
           </div>
         </div>
