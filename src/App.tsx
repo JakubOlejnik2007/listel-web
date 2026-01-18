@@ -1,12 +1,10 @@
 import { useState } from 'react'
 import Nav from './partials/navbar.tsx'
-import MailRow from './partials/mailView/MailRow.tsx'
 import './styles/index.scss'
 import './styles/animations.scss'
 import './styles/app.scss'
 import './styles/flat.scss'
-import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query'
-import { getPaginatedMails } from './service/apiFetchFunctions.ts'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import MailList from './pages/MailList.tsx'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Mail from './pages/Mail.tsx'
@@ -15,27 +13,18 @@ import AddMailbox from './pages/AddMailbox.tsx'
 const queryClient = new QueryClient();
 
 function App() {
-  const [page, setPage] = useState(0)
-
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <Nav></Nav>
         <Router>
+          <Nav />
           <Routes>
             <Route path='/mail' element={<MailList />} />
             <Route path='/mail/:id' element={<Mail />} />
             <Route path="/" element={<AddMailbox />} />
-
-
+            <Route path="/add-mailbox" element={<AddMailbox />} />
           </Routes>
-
-
-
-
-
         </Router>
-
       </QueryClientProvider>
     </>
   )

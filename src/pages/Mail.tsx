@@ -2,6 +2,7 @@ import { useQueryClient } from "@tanstack/react-query"
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import type { ParsedMail } from "../types/ParsedMail.type"
+import { getActiveMailbox } from "../utils/mailboxStorage"
 
 function downloadPdf(att) {
     const uint8 = new Uint8Array(att.content.data)
@@ -23,17 +24,16 @@ const Mail = () => {
     const navigate = useNavigate()
     const params = useParams()
     const queryClient = useQueryClient()
+    const activeMailbox = getActiveMailbox();
 
-    const mails = queryClient.getQueryData(["emails-page"]) as {
-        pages: {
-            data: ParsedMail[]
-        }[]
+    const mails = queryClient.getQueryData(['emails-page', activeMailbox?.id]) as {
+        pages: ParsedMail[][]
     } | undefined
 
     console.log("mails", mails)
 
     useEffect(() => {
-        console.log(!params.id, !ID_REG.test(params.id), !mails)
+        console.log(!params.id, !ID_REG.test(params.id || ''), !mails)
         if (!params.id || !ID_REG.test(params.id) || !mails) {
             navigate("/mail")
             return
@@ -43,10 +43,12 @@ const Mail = () => {
         const page = parseInt(pageStr)
         const element = parseInt(elementStr)
 
-        console.log(page, element, mails)
+        console.log("Looking for:", page, element, mails)
 
+        // Fixed: pages is an array of arrays
         const target = mails.pages?.[page]?.[element]
-        console.log(target)
+        console.log("Found target:", target)
+        
         if (!target) {
             navigate("/mail")
             return
@@ -67,28 +69,18 @@ const Mail = () => {
                 <span className="title">{mail.subject}</span>
                 <div className='tag'></div>
             </div>
-            <div style={{
-
-            }} className="mailAttachments">
-
+            <div className="mailAttachments">
                 {
                     mail.attachments.map((attachment, idx) => {
                         return (
-                            <div className="Attachment"
-                            
+                            <div 
+                                key={idx}
+                                className="Attachment"
                                 onClick={() => downloadPdf(attachment)}
                             >
-                                <span style={{
-                                    margin: 0
-                                    
-                                }}
-                                // className="Attachment"
-                                >{attachment.filename}</span>
-                                {/* <span style={{
-                                    margin: 0,
-                                    right: 0,
-                                    textAlign: "right"
-                                }}>{attachment.contentType.split("/")[1].toUpperCase()}</span> */}
+                                <span style={{ margin: 0 }}>
+                                    {attachment.filename}
+                                </span>
                             </div>
                         )
                     })
