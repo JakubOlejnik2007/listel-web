@@ -1,3 +1,5 @@
+// utils/mailboxStorage.ts
+
 export type MailboxType = 'POP3' | 'IMAP' | 'GMAIL';
 
 export interface Mailbox {
@@ -10,6 +12,7 @@ export interface Mailbox {
   // Gmail specific
   accessToken?: string;
   refreshToken?: string;
+  nextPageToken?: string; // Track Gmail pagination
 }
 
 const STORAGE_KEY = 'listel_mailboxes';
@@ -65,6 +68,19 @@ export const saveMailboxes = (mailboxes: Mailbox[]): void => {
 // Add a new mailbox
 export const addMailbox = (mailbox: Omit<Mailbox, 'id'>): Mailbox => {
   const mailboxes = getMailboxes();
+  
+  // Check if this email already exists
+  const existingMailbox = mailboxes.find(m => m.email === mailbox.email && m.type === mailbox.type);
+  if (existingMailbox) {
+    // Update existing mailbox instead of creating duplicate
+    const updated = mailboxes.map(m => 
+      m.id === existingMailbox.id ? { ...m, ...mailbox } : m
+    );
+    saveMailboxes(updated);
+    setActiveMailbox(existingMailbox.id);
+    return existingMailbox;
+  }
+  
   const newMailbox: Mailbox = {
     ...mailbox,
     id: `mailbox_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,

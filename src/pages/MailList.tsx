@@ -2,6 +2,7 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import React from "react";
 import MailRow from "../partials/mailView/MailRow";
 import { getPaginatedMails } from "../service/apiFetchFunctions";
 import { getActiveMailbox } from "../utils/mailboxStorage";
@@ -121,8 +122,8 @@ const MailList = () => {
                 <table border={0}>
                     <tbody>
                         {data.pages.map((group, i) => (
-                            <>
-                                {group.map((mail: ParsedMail, idx: number) => (
+                            <React.Fragment key={i}>
+                                {group.emails.map((mail: ParsedMail, idx: number) => (
                                     <MailRow 
                                         key={`${i}_${idx}`}
                                         mail={mail} 
@@ -130,7 +131,7 @@ const MailList = () => {
                                         id={`mail${i}_${idx}`} 
                                     />
                                 ))}
-                            </>
+                            </React.Fragment>
                         ))}
                     </tbody>
                 </table>

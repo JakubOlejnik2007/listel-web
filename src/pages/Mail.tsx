@@ -33,29 +33,29 @@ const Mail = () => {
     console.log("mails", mails)
 
     useEffect(() => {
-        console.log(!params.id, !ID_REG.test(params.id || ''), !mails)
-        if (!params.id || !ID_REG.test(params.id) || !mails) {
-            navigate("/mail")
-            return
-        }
+    console.log(!params.id, !ID_REG.test(params.id || ''), !mails)
+    if (!params.id || !ID_REG.test(params.id) || !mails) {
+        navigate("/mail")
+        return
+    }
 
-        const [pageStr, elementStr] = params.id.split("_")
-        const page = parseInt(pageStr)
-        const element = parseInt(elementStr)
+    const [pageStr, elementStr] = params.id.split("_")
+    const page = parseInt(pageStr)
+    const element = parseInt(elementStr)
 
-        console.log("Looking for:", page, element, mails)
+    console.log("Looking for:", page, element, mails)
 
-        // Fixed: pages is an array of arrays
-        const target = mails.pages?.[page]?.[element]
-        console.log("Found target:", target)
-        
-        if (!target) {
-            navigate("/mail")
-            return
-        }
+    // FIXED: Access the emails array inside each page object
+    const target = mails.pages?.[page]?.emails?.[element]
+    console.log("Found target:", target)
+    
+    if (!target) {
+        navigate("/mail")
+        return
+    }
 
-        setMail(target)
-    }, [params.id, mails, navigate])
+    setMail(target)
+}, [params.id, mails, navigate])
 
     if (!mail) return null
 

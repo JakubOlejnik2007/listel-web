@@ -9,6 +9,7 @@ import MailList from './pages/MailList.tsx'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Mail from './pages/Mail.tsx'
 import AddMailbox from './pages/AddMailbox.tsx'
+import GmailCallback from './pages/GmailCallback.tsx'
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ function App() {
             <Route path='/mail/:id' element={<Mail />} />
             <Route path="/" element={<AddMailbox />} />
             <Route path="/add-mailbox" element={<AddMailbox />} />
+            <Route path="/gmail-callback" element={<GmailCallback />} />
           </Routes>
         </Router>
       </QueryClientProvider>

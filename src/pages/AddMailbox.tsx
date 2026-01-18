@@ -1,7 +1,7 @@
-// AddMailbox.tsx
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { addMailbox, type MailboxType } from "../utils/mailboxStorage";
+import { getGmailAuthUrl } from "../service/apiFetchFunctions";
 
 const AddMailbox = () => {
     const navigate = useNavigate();
@@ -19,11 +19,30 @@ const AddMailbox = () => {
         setSelectedType(type);
         setError('');
         
-        // Set default ports
+        // For Gmail, redirect to OAuth flow
+        if (type === 'GMAIL') {
+            handleGmailAuth();
+            return;
+        }
+        
+        // Set default ports for POP3/IMAP
         if (type === 'POP3') {
             setFormData(prev => ({ ...prev, port: '995' }));
         } else if (type === 'IMAP') {
             setFormData(prev => ({ ...prev, port: '993' }));
+        }
+    };
+
+    const handleGmailAuth = async () => {
+        setIsLoading(true);
+        try {
+            const authUrl = await getGmailAuthUrl();
+            // Redirect to Google OAuth
+            window.location.href = authUrl;
+        } catch (err) {
+            setError('Nie udało się rozpocząć autoryzacji Gmail');
+            setIsLoading(false);
+            console.error(err);
         }
     };
 
@@ -43,12 +62,6 @@ const AddMailbox = () => {
             // Validate inputs
             if (!formData.email || !formData.password || !formData.host) {
                 setError('Wypełnij wszystkie pola');
-                setIsLoading(false);
-                return;
-            }
-
-            if (selectedType === 'GMAIL') {
-                setError('Gmail będzie dostępny wkrótce!');
                 setIsLoading(false);
                 return;
             }
@@ -100,14 +113,14 @@ const AddMailbox = () => {
             ) : (
                 <form onSubmit={handleSubmit}>                    
                     {error && (
-                        <div style={{ color: 'red', marginBottom: '1rem' }}>
+                        <div className="error-message">
                             {error}
                         </div>
                     )}
 
                     <div className="inputform">
                         <label>
-                            Email
+                            Email:
                         </label>
                         <input
                             type="email"
@@ -121,7 +134,7 @@ const AddMailbox = () => {
 
                     <div className="inputform">
                         <label>
-                            Hasło
+                            Hasło:
                         </label>
                         <input
                             type="password"
@@ -147,7 +160,7 @@ const AddMailbox = () => {
                         />
                     </div>
 
-                    <div >
+                    <div className="inputform">
                         <label>
                             Port
                         </label>
@@ -160,14 +173,13 @@ const AddMailbox = () => {
                         />
                     </div>
 
-                    <div style={{ display: 'flex', gap: '1rem', marginTop: '1.5rem' }}>
+                    <div className="formbuttons">
                         <button type="button" onClick={handleCancel}>
                             Anuluj
                         </button>
                         <button type="submit" disabled={isLoading}>
                             {isLoading ? 'Dodawanie...' : 'Dodaj skrzynkę'}
                         </button>
-
                     </div>
                 </form>
             )}
