@@ -92,17 +92,19 @@ nav{
         }
     }
 .mailContainer {
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgba(255, 255, 255, 0.037);
     outline: 1px solid rgba(0, 0, 0, 0.5);
     box-shadow: none;
     border: 1px solid var(--borderColor);
     tr {
         background-color: #00000018;
-        &:nth-child(even) {
-            background-color: #00000036;
-        }
+        // &:nth-child(even) {
+        //     background-color: #00000036;
+        // }
+            transition: 0.05s;
+
         &:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.05);
         }
     }
 }
