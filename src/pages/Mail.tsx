@@ -45,7 +45,6 @@ const Mail = () => {
 
     console.log("Looking for:", page, element, mails)
 
-    // FIXED: Access the emails array inside each page object
     const target = mails.pages?.[page]?.emails?.[element]
     console.log("Found target:", target)
     

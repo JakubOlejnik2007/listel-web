@@ -57,42 +57,46 @@ const GmailCallback = () => {
     }, [searchParams, navigate]);
 
     return (
+        <>
         <div className="addMailboxContainer">
             <div className="brand">Listel</div>
             
             <div id="hrbox">
                 <div id="hr"></div>
                 <span id="hrboxmain">
-                    {status === 'loading' && 'Łączenie z Gmail...'}
+                    {/* {status === 'loading' && 'Łączenie z Gmail...'}
                     {status === 'success' && 'Połączono!'}
-                    {status === 'error' && 'Błąd'}
+                    {status === 'error' && 'Błąd'} */}
+                    Łączenie z Gmail
                 </span>
                 <div id="hr"></div>
             </div>
 
             {status === 'loading' && (
-                <p style={{ textAlign: 'center', color: '#888' }}>
+                <p style={{ textAlign: 'center', color: 'var(--dark)' }}>
                     Proszę czekać...
                 </p>
             )}
 
             {status === 'success' && (
-                <p style={{ textAlign: 'center', color: 'var(--accent)' }}>
-                    Konto Gmail zostało dodane! Przekierowywanie...
-                </p>
+                <div style={{ textAlign: 'center', color: 'var(--dark)', height:"140px", lineHeight:"140px" }}>
+                    odświeżanie
+                </div>
             )}
 
+
+        </div>
             {status === 'error' && (
-                <>
-                    <p style={{ textAlign: 'center', color: 'red' }}>
+                <div className="dialog">
+                    <div className="error">
                         {error}
-                    </p>
+                    </div>
                     <button onClick={() => navigate('/add-mailbox')}>
                         Spróbuj ponownie
                     </button>
-                </>
+                </div>
             )}
-        </div>
+        </>
     );
 };
 

@@ -588,3 +588,14 @@ nav {
     all: initial;
     font-family: inherit;
 }
+.dialog{
+    background-color: #0000009d;
+    position: absolute;
+    top: 250px;
+    left: calc(50% - 200px);
+    width: 400px;
+    height: 125px;
+    .error{
+        color: rgb(255, 48, 51);
+    }
+}
