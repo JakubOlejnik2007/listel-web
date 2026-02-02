@@ -9,6 +9,10 @@
     --ViewWidth: 65%;
     --ViewMargin: 12px;
     --viewCornerRadius: calc(var(--defaultCornerRadius)*2);
+    @media (max-width:750px) { 
+        --ViewWidth: 100%;
+     }
+     
 
     --viewTableHeight: 35px;
 
