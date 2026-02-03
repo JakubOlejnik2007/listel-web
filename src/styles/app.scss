@@ -593,13 +593,46 @@ nav {
     font-family: inherit;
 }
 .dialog{
-    background-color: #0000009d;
+    background-color: #00000084;
+    border: 1px rgba(255, 255, 255, 0.267) solid;
+    box-shadow: 0px 0px 4px rgb(0, 0, 0);
+    border-radius: calc(var(--defaultCornerRadius)*2);
     position: absolute;
     top: 250px;
     left: calc(50% - 200px);
     width: 400px;
     height: 125px;
-    .error{
-        color: rgb(255, 48, 51);
+    
+    .icon{
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 35px;
+        height:35px;
+        display: inline-block;
+        margin-right: 8px;
+        float: left;
+        margin: var(--defaultPadding);
+    }
+    .content{
+        color: var(--light);
+        margin: var(--defaultPadding);
+    }
+    &.error{
+        // color: rgb(255, 28, 62);
+        .icon{
+            background-image: url("src/assets/errorIcon.png");
+        }
+    }
+
+    .titlebar{
+      --titlebarGradient: linear-gradient(180deg, rgb(81, 81, 81) 0%, rgb(53, 53, 53) 50%, rgba(38, 38, 38, 1) 50%, rgb(32, 32, 32) 100%);
+      background: var(--titlebarGradient);
+      color: white;
+      font-weight: 300;
+      border-top-left-radius: calc(var(--defaultCornerRadius)*2);
+      border-top-right-radius: calc(var(--defaultCornerRadius)*2);
+      height: 28px ;
+      line-height: 28px;
+      padding-left: 6px;
     }
 }

@@ -87,8 +87,10 @@ const GmailCallback = () => {
 
         </div>
             {status === 'error' && (
-                <div className="dialog">
-                    <div className="error">
+                <div className="dialog error">
+                    <div className="titlebar">Błąd</div>
+                    <div className="icon"></div>
+                    <div className="content">
                         {error}
                     </div>
                     <button onClick={() => navigate('/add-mailbox')}>
