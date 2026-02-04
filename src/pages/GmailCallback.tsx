@@ -93,7 +93,7 @@ const GmailCallback = () => {
                     <div className="content">
                         {error}
                     </div>
-                    <button onClick={() => navigate('/add-mailbox')}>
+                    <button onClick={() => navigate('/add-mailbox')} className="smallButton">
                         Spróbuj ponownie
                     </button>
                 </div>

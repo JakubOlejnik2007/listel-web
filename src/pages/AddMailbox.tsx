@@ -106,9 +106,9 @@ const AddMailbox = () => {
 
             {!selectedType ? (
                 <>
-                    <button onClick={() => handleTypeSelect('GMAIL')}>Gmail</button>
-                    <button onClick={() => handleTypeSelect('POP3')}>POP3</button>
-                    <button onClick={() => handleTypeSelect('IMAP')}>IMAP</button>
+                    <button onClick={() => handleTypeSelect('GMAIL')} className="smallButton">Gmail</button>
+                    <button onClick={() => handleTypeSelect('POP3')} className="smallButton">POP3</button>
+                    <button onClick={() => handleTypeSelect('IMAP')} className="smallButton">IMAP</button>
                 </>
             ) : (
                 <form onSubmit={handleSubmit}>                    
@@ -174,10 +174,10 @@ const AddMailbox = () => {
                     </div>
 
                     <div className="formbuttons">
-                        <button type="button" onClick={handleCancel}>
+                        <button type="button" onClick={handleCancel} className="smallButton">
                             Anuluj
                         </button>
-                        <button type="submit" disabled={isLoading}>
+                        <button type="submit" disabled={isLoading} className="smallButton">
                             {isLoading ? 'Dodawanie...' : 'Dodaj skrzynkę'}
                         </button>
                     </div>
