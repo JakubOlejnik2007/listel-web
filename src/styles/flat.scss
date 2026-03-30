@@ -1,6 +1,6 @@
 .flat{
 background-image: none;
-background-color: #202325;
+background-color: #1e1e1f;
 --navbarGradient: linear-gradient(90deg,rgba(211, 226, 0, 0.1) 0%, rgba(19, 115, 120, 0.1) 100%);
     --navbarButtonGradient: none;
     --navbarButtonActive: none;
@@ -33,10 +33,10 @@ nav{
             border: 1px solid #c5f51a;
         }
     }
-            &:hover{
-            border-bottom: 1px solid #c5f51a;
-            backdrop-filter: blur(20px);
-        }
+        &:hover{
+        border-bottom: 1px solid #c5f51a;
+        backdrop-filter: blur(20px);
+    }
         transition: 1s;
 }
 .search{
@@ -185,3 +185,24 @@ text-shadow: none;
         }
         
     }
+
+
+.addMailboxContainer{
+
+    input{
+        background-color: rgba(0, 0, 0, 0);
+        width: calc(100% - 16px);
+        border: 1px solid var(--borderColor);
+        margin-left: 8px;
+        &:focus{
+            border-color: var(--accent);
+            outline: none;
+        }
+    }
+    label{
+        background-color: rgba(0, 0, 0, 0);
+        border: none;
+        color: var(--borderColor);
+        font-size: 14px;
+    }
+}
