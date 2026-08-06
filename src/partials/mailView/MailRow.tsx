@@ -8,16 +8,6 @@ const MailRow = ({ mail, openMail, id }: { mail: ParsedMail, openMail: () => voi
   const today = new Date()
   const dateDiffHours = (today - date) / 1000 / 60 / 60
 
-
-  // const tempDiv = document.createElement("div");
-  // tempDiv.innerHTML = mail.html;
-  // tempDiv.querySelectorAll("style").forEach(styleTag => styleTag.remove());
-  // console.log(tempDiv)
-  // const text = tempDiv.innerText
-
-
-
-
   return (
     <tr tabIndex={0} onClick={() => openMail()} id={id}>
       <td id='tag'><div className='tag'></div></td>
