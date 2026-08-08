@@ -138,12 +138,18 @@ const MailList = () => {
             </div>
 
             <span className='pageEnd'>
-                to już jest koniec...
+                
+                {isFetchingNextPage
+                        ? 'Ładuję następne maile...'
+                        : hasNextPage
+                            ? 'Scroll w dół by załadować '
+                            : 'To już jest koniec...'}
             </span>
             <span className='logo'>Listel.</span>
 
             <div>
                 <button
+                    id="debugFetchButton"
                     onClick={() => fetchNextPage()}
                     disabled={!hasNextPage || isFetching}
                 >

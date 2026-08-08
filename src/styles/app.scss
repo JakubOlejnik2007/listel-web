@@ -315,6 +315,9 @@ nav {
         padding-right: calc(var(--defaultPadding)*2);
     }
 }
+#debugFetchButton{
+    display: none;
+}
 .mailDisplay{
     background-color: rgb(255, 255, 255);
     // box-shadow: inset 0px 1px 5px black !important;
