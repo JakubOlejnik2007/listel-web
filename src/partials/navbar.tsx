@@ -35,7 +35,7 @@ function Nav() {
     console.log('Setting new active mailbox');
     setActiveMailbox(mailboxId);
     setIsMailDropdownOpen(false);
-    
+    navigate('/mail');
     window.location.reload();
   };
 

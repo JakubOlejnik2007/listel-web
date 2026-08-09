@@ -91,7 +91,7 @@ const AddMailbox = () => {
     };
 
     const handleCancel = () => {
-        navigate('/mail');
+        setSelectedType(null);
     };
 
     return (
