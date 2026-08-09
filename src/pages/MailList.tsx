@@ -145,7 +145,7 @@ const MailList = () => {
                             ? 'Scroll w dół by załadować '
                             : 'To już jest koniec...'}
             </span>
-            <span className='logo'>Listel.</span>
+            <span className='listel-logo'>Listel.</span>
 
             <div>
                 <button
