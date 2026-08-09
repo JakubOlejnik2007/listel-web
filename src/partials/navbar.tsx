@@ -26,6 +26,9 @@ function Nav() {
     
     // Don't switch if already active
     if (mailboxId === activeMailbox?.id) {
+      if (location.pathname === '/add-mailbox') {
+        navigate('/mail');
+      }
       setIsMailDropdownOpen(false);
       return;
     }
