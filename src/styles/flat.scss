@@ -171,12 +171,15 @@ text-shadow: none;
             margin-left: 6px;
             margin-right: 6px;
         }
+            &.expand{
+            height: 425px;
+            }
+
     }
 
 
-
 .smallButton{
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(125, 125, 125, 0.1);
         border: 1px rgba(255,255,255,0.2) solid;
         &:before{display: none;}
         &:hover{
