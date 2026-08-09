@@ -323,6 +323,7 @@ nav {
 .mailDisplay{
     background-color: rgb(255, 255, 255);
     // box-shadow: inset 0px 1px 5px black !important;
+    position: relative;
     padding: 0px;
     min-height: 200px;
     width: var(--ViewWidth);
