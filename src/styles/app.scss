@@ -126,7 +126,8 @@ nav {
     display: none;
     position: absolute;
     top: 40px;
-    left: var(--ViewMargin);
+    // left: var(--ViewMargin);
+    left: 0;
     backdrop-filter: blur(3px);
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: var(--defaultCornerRadius);
@@ -134,10 +135,11 @@ nav {
     border: 1px solid rgba(255, 255, 255, 0.192);
     border-bottom-color: rgba(108, 108, 108, 0.705);
     width: max-content;
-    min-width: 150px;
+    min-width: 1px;
     div{
         padding: var(--defaultPadding);
         padding-left: calc(var(--defaultPadding)*2);
+        padding-right: calc(var(--defaultPadding)*2);
         color: rgba(255, 255, 255, 0.8);
         font-weight: 300;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);

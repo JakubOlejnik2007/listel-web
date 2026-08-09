@@ -120,7 +120,7 @@ const AddMailbox = () => {
 
                     <div className="inputform">
                         <label>
-                            Email:
+                            Email
                         </label>
                         <input
                             type="email"
@@ -134,7 +134,7 @@ const AddMailbox = () => {
 
                     <div className="inputform">
                         <label>
-                            Hasło:
+                            Hasło
                         </label>
                         <input
                             type="password"

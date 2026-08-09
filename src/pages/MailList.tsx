@@ -160,7 +160,7 @@ const MailList = () => {
                             : 'Nothing more to load'}
                 </button>
             </div>
-            <div>{isFetching && !isFetchingNextPage ? 'Fetching...' : null}</div>
+            {/* <div>{isFetching && !isFetchingNextPage ? 'Fetching...' : null}</div> */}
         </>
     );
 };

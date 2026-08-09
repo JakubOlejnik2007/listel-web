@@ -23,16 +23,13 @@ function Nav() {
   };
 
   const handleMailboxSwitch = (mailboxId: string) => {
-    console.log('Switching to mailbox:', mailboxId);
     
     // Don't switch if already active
     if (mailboxId === activeMailbox?.id) {
-      console.log('Already active, closing dropdown');
       setIsMailDropdownOpen(false);
       return;
     }
     
-    console.log('Setting new active mailbox');
     setActiveMailbox(mailboxId);
     setIsMailDropdownOpen(false);
     navigate('/mail');
