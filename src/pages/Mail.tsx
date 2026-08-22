@@ -16,8 +16,31 @@ function downloadPdf(att) {
 
     URL.revokeObjectURL(url)
 }
+function extractBodyBackground(html: string): string | null {								//get mail bg color to make it not clash with the rest of the app
+    const parser = new DOMParser()
+    const doc = parser.parseFromString(html, "text/html")
+    const body = doc.body
+    if (!body) return null
+
+    if (body.style.backgroundColor) return body.style.backgroundColor
+
+    const bgAttr = body.getAttribute("bgcolor")
+    if (bgAttr) return bgAttr
+
+    const firstEl = body.firstElementChild as HTMLElement | null							// in case someone put the bg color in a table
+    if (firstEl) {
+        if (firstEl.style?.backgroundColor) return firstEl.style.backgroundColor
+        const tableBg = firstEl.getAttribute?.("bgcolor")
+        if (tableBg) return tableBg
+    }
+
+    return null
+}
+
+
 
 const Mail = () => {
+
     const ID_REG = /^\d+_\d+$/;
     const [mail, setMail] = useState<ParsedMail | null>(null);
 
@@ -25,6 +48,16 @@ const Mail = () => {
     const params = useParams()
     const queryClient = useQueryClient()
     const activeMailbox = getActiveMailbox();
+    
+	const [bgColor, setBgColor] = useState<string | null>(null)
+
+	useEffect(() => {
+    	if (mail?.html) {
+   			setBgColor(extractBodyBackground(mail.html))
+    	}
+	}, [mail])
+	
+
 
     const mails = queryClient.getQueryData(['emails-page', activeMailbox?.id]) as {
         pages: ParsedMail[][]
@@ -87,6 +120,7 @@ const Mail = () => {
             </div>
             <div
                 className="mailDisplay"
+                style={{backgroundColor: bgColor ?? undefined}}
                 dangerouslySetInnerHTML={{ __html: mail.html }}
             />
         </>
