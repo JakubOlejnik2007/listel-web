@@ -1,5 +1,5 @@
 import { useQueryClient } from "@tanstack/react-query"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import type { ParsedMail } from "../types/ParsedMail.type"
 import { getActiveMailbox } from "../utils/mailboxStorage"
@@ -16,78 +16,73 @@ function downloadPdf(att) {
 
     URL.revokeObjectURL(url)
 }
-function extractBodyBackground(html: string): string | null {								//get mail bg color to make it not clash with the rest of the app
-    const parser = new DOMParser()
-    const doc = parser.parseFromString(html, "text/html")
-    const body = doc.body
-    if (!body) return null
 
-    if (body.style.backgroundColor) return body.style.backgroundColor
-
-    const bgAttr = body.getAttribute("bgcolor")
-    if (bgAttr) return bgAttr
-
-    const firstEl = body.firstElementChild as HTMLElement | null							// in case someone put the bg color in a table
-    if (firstEl) {
-        if (firstEl.style?.backgroundColor) return firstEl.style.backgroundColor
-        const tableBg = firstEl.getAttribute?.("bgcolor")
-        if (tableBg) return tableBg
-    }
-
-    return null
+function extractBodyBackgroundFromDoc(doc: Document): string | undefined {
+    if (!doc.body) return undefined
+    const bg = getComputedStyle(doc.body).backgroundColor
+    // ignore fully transparent backgrounds
+    if (!bg || bg === "rgba(0, 0, 0, 0)" || bg === "transparent") return undefined
+    return bg
 }
 
-
-
 const Mail = () => {
-
     const ID_REG = /^\d+_\d+$/;
     const [mail, setMail] = useState<ParsedMail | null>(null);
+    const [bgColor, setBgColor] = useState<string | undefined>(undefined);
 
     const navigate = useNavigate()
     const params = useParams()
     const queryClient = useQueryClient()
     const activeMailbox = getActiveMailbox();
-    
-	const [bgColor, setBgColor] = useState<string | null>(null)
 
-	useEffect(() => {
-    	if (mail?.html) {
-   			setBgColor(extractBodyBackground(mail.html))
-    	}
-	}, [mail])
-	
-
-
+    // NOTE: confirm this shape matches what's actually stored in the cache.
+    // If your pages are ParsedMail[][] (no .emails wrapper), change the
+    // type below to { pages: ParsedMail[][] } and drop `.emails` in the
+    // lookup further down.
     const mails = queryClient.getQueryData(['emails-page', activeMailbox?.id]) as {
-        pages: ParsedMail[][]
+        pages: { emails: ParsedMail[] }[]
     } | undefined
 
-    console.log("mails", mails)
+    const iframeRef = useRef<HTMLIFrameElement>(null)
+    const [iframeHeight, setIframeHeight] = useState(0)
+
+    const handleIframeLoad = () => {
+        const doc = iframeRef.current?.contentWindow?.document
+        if (!doc) return
+
+        // resize to fit content
+        setIframeHeight(doc.body.scrollHeight)
+
+        // extract bg color
+        const bg = extractBodyBackgroundFromDoc(doc)
+        setBgColor(bg)
+
+        // force links to open in a new tab instead of navigating the iframe
+        doc.querySelectorAll("a").forEach((a) => {
+            a.setAttribute("target", "_blank")
+            a.setAttribute("rel", "noopener noreferrer")
+        })
+    }
 
     useEffect(() => {
-    console.log(!params.id, !ID_REG.test(params.id || ''), !mails)
-    if (!params.id || !ID_REG.test(params.id) || !mails) {
-        navigate("/mail")
-        return
-    }
+        if (!params.id || !ID_REG.test(params.id) || !mails) {
+            navigate("/mail")
+            return
+        }
 
-    const [pageStr, elementStr] = params.id.split("_")
-    const page = parseInt(pageStr)
-    const element = parseInt(elementStr)
+        const [pageStr, elementStr] = params.id.split("_")
+        const page = parseInt(pageStr)
+        const element = parseInt(elementStr)
 
-    console.log("Looking for:", page, element, mails)
+        const target = mails.pages?.[page]?.emails?.[element]
 
-    const target = mails.pages?.[page]?.emails?.[element]
-    console.log("Found target:", target)
-    
-    if (!target) {
-        navigate("/mail")
-        return
-    }
+        if (!target) {
+            navigate("/mail")
+            return
+        }
 
-    setMail(target)
-}, [params.id, mails, navigate])
+        setMail(target)
+    }, [params.id, mails, navigate])
 
     if (!mail) return null
 
@@ -105,7 +100,7 @@ const Mail = () => {
                 {
                     mail.attachments.map((attachment, idx) => {
                         return (
-                            <div 
+                            <div
                                 key={idx}
                                 className="Attachment"
                                 onClick={() => downloadPdf(attachment)}
@@ -118,10 +113,19 @@ const Mail = () => {
                     })
                 }
             </div>
-            <div
+            <iframe
+                ref={iframeRef}
                 className="mailDisplay"
-                style={{backgroundColor: bgColor ?? undefined}}
-                dangerouslySetInnerHTML={{ __html: mail.html }}
+                srcDoc={mail.html}
+                onLoad={handleIframeLoad}
+                sandbox="allow-same-origin allow-popups"
+                style={{
+					display: "block",
+					padding: 0,
+                    height: iframeHeight,
+                    border: "none",
+                    backgroundColor: bgColor ?? undefined,
+                }}
             />
         </>
     )
