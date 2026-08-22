@@ -85,7 +85,7 @@ const Mail = () => {
     }, [params.id, mails, navigate])
 
     if (!mail) return null
-
+	//TODO: TEXT INVISIBLE IN DARK MODE BECAUSE THE BROWSER DOES STUFF
     return (
         <>
             <div className="mailHeader">
