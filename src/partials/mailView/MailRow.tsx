@@ -6,7 +6,7 @@ const MailRow = ({ mail, openMail, id }: { mail: ParsedMail, openMail: () => voi
   const subject = mail.subject
   const date = new Date(mail.date);
   const today = new Date()
-  const dateDiffHours = (today - date) / 1000 / 60 / 60
+  const dateDiffHours = (Number(today) - Number(date)) / 1000 / 60 / 60
 
   return (
     <tr tabIndex={0} onClick={() => openMail()} id={id}>

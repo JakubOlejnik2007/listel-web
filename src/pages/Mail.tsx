@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import type { ParsedMail } from "../types/ParsedMail.type"
 import { getActiveMailbox } from "../utils/mailboxStorage"
 
-function downloadPdf(att) {
+function downloadPdf(att: any) {
     const uint8 = new Uint8Array(att.content.data)
     const blob = new Blob([uint8], { type: att.contentType })
     const url = URL.createObjectURL(blob)

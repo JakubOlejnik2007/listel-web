@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Nav from './partials/navbar.tsx'
 import './styles/index.scss'
 import './styles/animations.scss'
